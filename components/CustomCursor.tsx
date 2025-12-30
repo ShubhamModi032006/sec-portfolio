@@ -1,14 +1,23 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Use MotionValues for direct DOM updates (no React re-renders for movement)
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  // Smooth spring physics - Snappy response
+  const springConfig = { damping: 20, stiffness: 400, mass: 0.1 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const updateMouse = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      cursorX.set(e.clientX - 6); // offset by half width (12px / 2)
+      cursorY.set(e.clientY - 6);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -34,21 +43,18 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-neon-main rounded-full pointer-events-none z-[9999] mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 6,
-          y: mousePosition.y - 6,
-          scale: isHovered ? 5 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 20,
-          mass: 0.1
-        }}
-      />
-    </>
+    <motion.div
+      className="fixed top-0 left-0 w-3 h-3 bg-neon-main rounded-full pointer-events-none z-[9999] mix-blend-difference"
+      style={{
+        x: cursorXSpring,
+        y: cursorYSpring,
+      }}
+      animate={{
+        scale: isHovered ? 4 : 1,
+      }}
+      transition={{
+        scale: { duration: 0.2 } // Separate transition for scale
+      }}
+    />
   );
 }
