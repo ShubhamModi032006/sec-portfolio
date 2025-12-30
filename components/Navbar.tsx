@@ -16,17 +16,17 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center z-50 pointer-events-none">
-        <div className="text-2xl font-display font-bold uppercase tracking-tighter pointer-events-auto mix-blend-difference z-50">
-          Dev<span className="text-neon-main">.</span>
+        <div className="text-2xl font-display font-bold uppercase tracking-tighter pointer-events-auto z-50 text-white drop-shadow-md">
+          Shubham<span className="text-neon-main drop-shadow-none">.</span>
         </div>
         
         {/* Desktop Nav */}
-        <div className="pointer-events-auto hidden md:flex items-center gap-1 px-2 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 transition-all hover:bg-white/10">
+        <div className="pointer-events-auto hidden md:flex items-center gap-1 px-2 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 transition-all hover:bg-black/70">
           {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
             <Link 
               key={item} 
               href={`#${item.toLowerCase()}`} 
-              className="px-6 py-2 rounded-full text-xs font-medium uppercase tracking-widest text-neutral-400 hover:text-white hover:bg-white/5 transition-all font-sans"
+              className="px-6 py-2 rounded-full text-xs font-medium uppercase tracking-widest text-neutral-200 hover:text-white hover:bg-white/10 transition-all font-sans"
             >
               {item}
             </Link>
@@ -44,7 +44,7 @@ export default function Navbar() {
         <div className="pointer-events-auto md:hidden">
             <button 
                 onClick={toggleMobileNav}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-bold uppercase tracking-widest"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white text-xs font-bold uppercase tracking-widest"
             >
                 {isMobileNavOpen ? 'Close' : 'Menu'}
             </button>

@@ -1,7 +1,7 @@
 "use client"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink, Youtube, X } from "lucide-react";
 import Link from "next/link";
 
 const projects = [
@@ -113,9 +113,41 @@ const projects = [
   },
 ];
 
-const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
+const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: string, href?: string, onClick?: () => void }) => {
+    if (href) {
+        return (
+            <Link
+                href={href}
+                target="_blank"
+                className="group/btn relative flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-black rounded-full overflow-hidden transition-all duration-300 w-10 h-10 hover:w-auto hover:px-4 backdrop-blur-md"
+            >
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="w-0 overflow-hidden group-hover/btn:w-auto transition-all duration-300 font-medium text-xs opacity-0 group-hover/btn:opacity-100">
+                        {label}
+                    </span>
+                </div>
+            </Link>
+        );
+    }
+
+    return (
+        <motion.button
+            onClick={onClick}
+            className="group/btn relative flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-black rounded-full overflow-hidden transition-all duration-300 w-10 h-10 hover:w-auto hover:px-4 backdrop-blur-md"
+        >
+            <div className="flex items-center gap-2 whitespace-nowrap">
+                <Icon className="w-5 h-5 flex-shrink-0" />
+                <span className="w-0 overflow-hidden group-hover/btn:w-auto transition-all duration-300 font-medium text-xs opacity-0 group-hover/btn:opacity-100">
+                    {label}
+                </span>
+            </div>
+        </motion.button>
+    );
+};
+
+const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], onVideoClick: (url: string) => void }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
     const [isHovered, setIsHovered] = useState(false);
 
     const x = useMotionValue(0);
@@ -136,17 +168,10 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
         x.set(0);
         y.set(0);
         setIsHovered(false);
-        if(videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-        }
     }
 
     function handleMouseEnter() {
         setIsHovered(true);
-        if(videoRef.current) {
-            videoRef.current.play().catch(e => console.log("Video play failed", e));
-        }
     }
 
     const rotateX = useTransform(mouseY, [-0.5, 0.5], ["5deg", "-5deg"]);
@@ -169,7 +194,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
               style={{ transform: "translateZ(0px)" }} 
               className="absolute inset-0 bg-neutral-800 transition-colors z-0 overflow-hidden"
             >
-                {/* Background Image / Video */}
+                {/* Background Image - static, darkens on hover */}
                 <div className="absolute inset-0 transition-opacity duration-500 opacity-60 group-hover:opacity-40">
                     <img 
                         src={project.image} 
@@ -178,32 +203,20 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                     />
                 </div>
                 
-                {project.demoVideo && (
-                     <video
-                        ref={videoRef}
-                        muted
-                        loop
-                        playsInline
-                        src={project.demoVideo}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
-                    />
-                )}
-
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent opacity-80" />
             </div>
             
             <div style={{ transform: "translateZ(50px)" }} className="relative z-10 h-full p-8 flex flex-col justify-between pointer-events-none">
                 <div className="flex justify-between items-start pointer-events-auto">
                     <span className="px-3 py-1 rounded-full border border-white/10 text-xs font-mono bg-black/40 backdrop-blur-md text-white/80">{project.category}</span>
-                    <div className="flex gap-2">
-                         {project.github && project.github !== "#" && (
-                            <Link href={project.github} target="_blank" className="w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white hover:text-black flex items-center justify-center backdrop-blur-md transition-all duration-300">
-                                <Github className="w-5 h-5" />
-                            </Link>
+                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                         {project.demoVideo && (
+                            <ActionButton icon={Youtube} label="Watch Demo" onClick={() => onVideoClick(project.demoVideo!)} />
                          )}
-                         <Link href={project.link} target="_blank" className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
-                             <ArrowUpRight className="w-5 h-5" />
-                         </Link>
+                         {project.github && project.github !== "#" && (
+                             <ActionButton icon={Github} label="Source Code" href={project.github} />
+                         )}
+                         <ActionButton icon={ArrowUpRight} label="Live Site" href={project.link} />
                     </div>
                 </div>
                 
@@ -226,6 +239,8 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 }
 
 export default function Projects() {
+    const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
     return (
         <section id="projects" className="py-32 container mx-auto px-4 z-10 relative">
             <div className="flex items-end justify-between mb-16">
@@ -235,9 +250,39 @@ export default function Projects() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {projects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
+                    <ProjectCard key={project.id} project={project} onVideoClick={setSelectedVideo} />
                 ))}
             </div>
+
+            <AnimatePresence>
+                {selectedVideo && (
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedVideo(null)}
+                        className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-20"
+                    >
+                        <button className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors">
+                            <X className="w-10 h-10" />
+                        </button>
+                        <motion.div 
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="relative w-full max-w-6xl aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+                        >
+                            <video 
+                                src={selectedVideo} 
+                                className="w-full h-full object-contain"
+                                controls
+                                autoPlay
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     )
 }
