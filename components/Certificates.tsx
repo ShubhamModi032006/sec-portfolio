@@ -11,67 +11,125 @@ interface Certificate {
     date: string;
     image: string;
     link: string;
-    // Keeping existing fields to avoid breaking if used elsewhere or if needed for flavor
-    rarity?: string;
-    level?: string;
-    xp?: string;
+    id_code?: string;
+    type?: string;
 }
 
 const certificates: Certificate[] = [
+    // --- HIGH PRIORITY (Intermediate / Specialized) ---
     {
         id: 1,
-        title: "Meta Backend Developer",
-        issuer: "Coursera",
-        date: "2024",
-        image: "https://placehold.co/600x400/1a1a1a/white?text=Meta+Backend",
-        link: "#",
-        rarity: "legendary",
-        level: "LVL 50",
-        xp: "5000 XP"
+        title: "Node.js (Intermediate)",
+        issuer: "HackerRank",
+        date: "2025",
+        image: "/nodejs_intermediate certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/iframe/838973719053", // Assuming user will update link or I keep generic
+        id_code: "NODE_INT_01",
+        type: "backend"
     },
     {
         id: 2,
-        title: "AWS Certified Cloud",
-        issuer: "Amazon Web Services",
-        date: "2023",
-        image: "https://placehold.co/600x400/1a1a1a/gold?text=AWS",
-        link: "#",
-        rarity: "epic",
-        level: "LVL 45",
-        xp: "4500 XP"
+        title: "Rest API (Intermediate)",
+        issuer: "HackerRank",
+        date: "2025",
+        image: "/rest_api_intermediate certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/iframe/325791240683",
+        id_code: "REST_INT_02",
+        type: "backend"
     },
     {
         id: 3,
-        title: "React Advanced Guide",
-        issuer: "Meta",
-        date: "2024",
-        image: "https://placehold.co/600x400/1a1a1a/61DAFB?text=React+Advanced",
-        link: "#",
-        rarity: "rare",
-        level: "LVL 30",
-        xp: "3000 XP"
+        title: "JavaScript (Intermediate)",
+        issuer: "HackerRank",
+        date: "2025",
+        image: "/javascript_intermediate certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/ed715b831fbf",
+        id_code: "ED7158831FBF",
+        type: "code"
     },
     {
         id: 4,
-        title: "Full Stack Development",
-        issuer: "Udemy",
-        date: "2023",
-        image: "https://placehold.co/600x400/1a1a1a/A020F0?text=Full+Stack",
-        link: "#",
-        rarity: "common",
-        level: "LVL 20",
-        xp: "2000 XP"
+        title: "Problem Solving (Intermediate)",
+        issuer: "HackerRank",
+        date: "2025",
+        image: "/problem_solving_intermediate certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/iframe/920384712039",
+        id_code: "PS_INT_04",
+        type: "algo"
     },
     {
         id: 5,
-        title: "Google UX Design",
-        issuer: "Google",
-        date: "2023",
-        image: "https://placehold.co/600x400/1a1a1a/4285F4?text=Google+UX",
+        title: "GitHub Copilot Fundamentals",
+        issuer: "Microsoft / Simplilearn",
+        date: "May 2025",
+        image: "/github_page-0001.jpg",
+        link: "https://certificates.simplicdn.net/share/8363721_87130481747671251510.pdf",
+        id_code: "8363721",
+        type: "ai"
+    },
+    {
+        id: 6,
+        title: "Amazon DocumentDB",
+        issuer: "AWS / Simplilearn",
+        date: "May 2025",
+        image: "/Amazon_documentDB_page-0001.jpg",
+        link: "https://certificates.simplicdn.net/share/8365040_87130481747713352033.pdf",
+        id_code: "8365040",
+        type: "cloud"
+    },
+    {
+        id: 7,
+        title: "Intro to Azure Services",
+        issuer: "Simplilearn",
+        date: "May 2025",
+        image: "/Basic Azure services_page-0001.jpg",
         link: "#",
-        rarity: "epic",
-        level: "LVL 40",
-        xp: "4000 XP"
+        id_code: "8381989",
+        type: "cloud"
+    },
+
+    // --- MEDIUM PRIORITY (Basic Skills) ---
+    {
+        id: 8,
+        title: "React (Basic)",
+        issuer: "HackerRank",
+        date: "2025",
+        image: "/react_basic certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/iframe/849201837482",
+        id_code: "REACT_bas_08",
+        type: "frontend"
+    },
+    {
+        id: 9,
+        title: "SQL (Basic)",
+        issuer: "HackerRank",
+        date: "2025",
+        image: "/sql_basic certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/6f817e93f1c3",
+        id_code: "6F817E93F1C3",
+        type: "database"
+    },
+
+    // --- BASE PRIORITY ---
+    {
+        id: 10,
+        title: "Problem Solving (Basic)",
+        issuer: "HackerRank",
+        date: "May 2025",
+        image: "/problem_solving_basic certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/66be564aa173",
+        id_code: "66BE564AA173",
+        type: "algo"
+    },
+    {
+        id: 11,
+        title: "CSS (Basic)",
+        issuer: "HackerRank",
+        date: "May 2025",
+        image: "/css certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/907dd2eac522",
+        id_code: "907DD2EAC522",
+        type: "frontend"
     }
 ];
 
@@ -95,7 +153,7 @@ export default function Certificates() {
             {/* Desktop: Master-Detail Layout */}
             <div className="hidden md:grid grid-cols-12 gap-10 border-t border-white/10 pt-10">
                 {/* Left Column: The List */}
-                <div className="col-span-12 lg:col-span-5 flex flex-col">
+                <div className="col-span-12 lg:col-span-5 flex flex-col max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent hover:scrollbar-thumb-neon-main/50 transition-colors">
                     {certificates.map((cert) => {
                         const isActive = hoveredCert.id === cert.id;
                         return (
@@ -103,7 +161,7 @@ export default function Certificates() {
                                 key={cert.id}
                                 onMouseEnter={() => setHoveredCert(cert)}
                                 className={`
-                                    relative p-6 cursor-pointer border-b border-white/5 transition-all duration-300 group
+                                    relative p-4 lg:p-6 cursor-pointer border-b border-white/5 transition-all duration-300 group
                                     ${isActive ? "bg-neon-main/5" : "hover:bg-white/5"}
                                 `}
                             >
@@ -124,7 +182,7 @@ export default function Certificates() {
                                             <span className="text-neutral-700">|</span>
                                             <span className="text-neutral-500 uppercase tracking-wider">{cert.issuer}</span>
                                         </div>
-                                        <h3 className={`text-xl font-bold font-display uppercase transition-colors ${isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"}`}>
+                                        <h3 className={`text-lg md:text-xl font-bold font-display uppercase transition-colors ${isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"}`}>
                                             {cert.title}
                                         </h3>
                                     </div>
@@ -140,7 +198,7 @@ export default function Certificates() {
                 </div>
 
                 {/* Right Column: The Preview */}
-                <div className="col-span-12 lg:col-span-7 relative h-[500px] sticky top-24">
+                <div className="col-span-12 lg:col-span-7 relative h-[500px] sticky top-32">
                     <div className="w-full h-full relative border border-white/10 bg-black/40 backdrop-blur-md rounded-xl overflow-hidden group">
                         {/* CRT Scanline Overlay */}
                         <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20" />
@@ -163,9 +221,9 @@ export default function Certificates() {
                                 <img
                                     src={hoveredCert.image}
                                     alt={hoveredCert.title}
-                                    className="w-full h-full object-cover opacity-60"
+                                    className="w-full h-full object-cover opacity-80"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 opacity-90" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20 opacity-90" />
                             </motion.div>
                         </AnimatePresence>
 
@@ -176,59 +234,64 @@ export default function Certificates() {
                         </div>
 
                         {/* Info Overlay */}
-                        <div className="absolute bottom-0 left-0 w-full p-8 z-30">
+                        <div className="absolute bottom-0 left-0 w-full p-8 z-30 bg-gradient-to-t from-black/90 to-transparent">
                             <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 mb-2">
                                 <Hash className="w-3 h-3" />
-                                <span>ID: CERT_00{hoveredCert.id}</span>
+                                <span>ID: {hoveredCert.id_code || `CERT_00${hoveredCert.id}`}</span>
                             </div>
-                            <h2 className="text-4xl font-display font-bold text-white uppercase mb-2">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold text-white uppercase mb-4 max-w-lg leading-tight drop-shadow-lg">
                                 {hoveredCert.title}
                             </h2>
                             <div className="flex items-center justify-between">
-                                <div className="flex gap-4">
+                                <div className="flex gap-6 md:gap-12">
                                     <div className="flex flex-col">
-                                        <span className="text-[10px] text-neutral-500 uppercase tracking-widest">Date</span>
-                                        <span className="text-sm font-mono text-neutral-300">{hoveredCert.date}</span>
+                                        <span className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Issued On</span>
+                                        <span className="text-sm font-mono text-neutral-300 bg-white/5 px-2 py-1 rounded border border-white/5">{hoveredCert.date}</span>
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className="text-[10px] text-neutral-500 uppercase tracking-widest">Issuer</span>
-                                        <span className="text-sm font-mono text-neon-main">{hoveredCert.issuer}</span>
+                                        <span className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Issuer Authority</span>
+                                        <span className="text-sm font-mono text-neon-main decoration-neon-main/50 underline underline-offset-4">{hoveredCert.issuer}</span>
                                     </div>
                                 </div>
 
-                                <a
-                                    href={hoveredCert.link}
-                                    className="p-3 bg-white text-black rounded-full hover:bg-neon-main transition-colors"
-                                >
-                                    <ExternalLink className="w-5 h-5" />
-                                </a>
+                                {hoveredCert.link && hoveredCert.link !== "#" && (
+                                    <a
+                                        href={hoveredCert.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-3 bg-white text-black rounded-full hover:bg-neon-main transition-colors group/link"
+                                    >
+                                        <ExternalLink className="w-5 h-5 group-hover/link:rotate-45 transition-transform duration-300" />
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Mobile: Vertical Stack (Standard Cards) */}
-            <div className="flex md:hidden flex-col gap-6">
+            {/* Mobile: Vertical Grid - Improved Compact Cards */}
+            <div className="grid grid-cols-1 gap-4 md:hidden">
                 {certificates.map((cert) => (
-                    <div key={cert.id} className="bg-neutral-900 border border-white/10 rounded-xl overflow-hidden">
-                        <div className="relative h-48">
-                            <img src={cert.image} alt={cert.title} className="w-full h-full object-cover opacity-60" />
-                            <div className="absolute inset-0 bg-black/50" />
-                            <div className="absolute top-4 right-4 px-2 py-1 bg-black/60 backdrop-blur-sm border border-neon-main/30 rounded text-xs font-mono text-neon-main flex items-center gap-1">
-                                <CheckCircle2 className="w-3 h-3" /> VERIFIED
+                    <div key={cert.id} className="bg-neutral-900 border border-white/10 rounded-xl overflow-hidden flex flex-col">
+                        <div className="relative h-64 w-full">
+                            <img src={cert.image} alt={cert.title} className="w-full h-full object-cover opacity-80" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />
+                            <div className="absolute bottom-2 left-4">
+                                <span className="bg-neon-main text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase">Verified</span>
                             </div>
                         </div>
-                        <div className="p-6">
-                            <div className="flex gap-2 text-xs font-mono text-neutral-500 mb-2">
+                        <div className="p-4 flex flex-col gap-2">
+                            <h3 className="text-xl font-bold text-white leading-tight font-display uppercase">{cert.title}</h3>
+                            <div className="flex justify-between items-center text-xs text-neutral-500 font-mono">
+                                <span className="text-neon-main">{cert.issuer}</span>
                                 <span>{cert.date}</span>
-                                <span>•</span>
-                                <span>{cert.issuer}</span>
                             </div>
-                            <h3 className="text-xl font-bold text-white uppercase mb-4">{cert.title}</h3>
-                            <a href={cert.link} className="inline-flex items-center gap-2 text-sm text-white hover:text-neon-main transition-colors">
-                                View Certificate <ExternalLink className="w-4 h-4" />
-                            </a>
+                            {cert.link && cert.link !== "#" && (
+                                <a href={cert.link} target="_blank" className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-neon-main transition-colors">
+                                    View Credential <ExternalLink className="w-4 h-4" />
+                                </a>
+                            )}
                         </div>
                     </div>
                 ))}
