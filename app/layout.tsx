@@ -24,15 +24,15 @@ export default function RootLayout({
       <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`}>
         {/* Global Texture */}
         <div className="grain-overlay" />
-        
+
         {/* Interactive Elements */}
         <CustomCursor />
         <Navbar />
         <SmoothScroll />
-        
+
         {/* Main Content */}
-        <main className="relative z-10 w-full overflow-hidden">
-            {children}
+        <main className="relative z-10 w-full">
+          {children}
         </main>
       </body>
     </html>
