@@ -153,24 +153,24 @@ export default function Certificates() {
         <section ref={containerRef} id="certifications" className="relative md:h-[300vh] bg-black">
             {/* Sticky Container for Desktop */}
             <div className="md:sticky md:top-0 md:h-screen md:overflow-hidden flex flex-col justify-center">
-                <div className="container mx-auto px-4 py-24 md:py-0">
+                <div className="container mx-auto px-4 sm:px-6 md:px-4 py-16 sm:py-20 md:py-24 lg:py-0">
 
                     {/* Header */}
-                    <div className="flex flex-col items-start mb-8 md:mb-16 select-none relative z-10">
-                        <h2 className="text-5xl md:text-7xl font-display font-bold uppercase leading-none text-white relative">
+                    <div className="flex flex-col items-start mb-6 sm:mb-8 md:mb-16 select-none relative z-10">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold uppercase leading-none text-white relative">
                             Licenses & <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700">Certifications</span>
-                            <span className="block h-1 w-24 bg-neon-main mt-4 shadow-[0_0_20px_rgba(var(--neon-main),0.5)]" />
+                            <span className="block h-1 w-16 sm:w-20 md:w-24 bg-neon-main mt-2 sm:mt-3 md:mt-4 shadow-[0_0_20px_rgba(var(--neon-main),0.5)]" />
                         </h2>
-                        <div className="mt-6 flex items-center gap-2 font-mono text-sm text-neon-main">
+                        <div className="mt-4 sm:mt-6 flex items-center gap-2 font-mono text-xs sm:text-sm text-neon-main">
                             <span className="w-2 h-2 bg-neon-main animate-pulse" />
                             // SYSTEM_LOG: CREDENTIALS_LOADED [{certificates.length}]
                         </div>
                     </div>
 
                     {/* Desktop: Master-Detail Layout */}
-                    <div className="hidden md:grid grid-cols-12 gap-10 border-t border-white/10 pt-10">
+                    <div className="hidden md:grid grid-cols-12 gap-6 lg:gap-10 border-t border-white/10 pt-6 lg:pt-10">
                         {/* Left Column: The List - Sticky Logic Controlled by Parent Scroll */}
-                        <div className="col-span-12 lg:col-span-5 h-[500px] overflow-hidden relative border-r border-white/5 pr-4">
+                        <div className="col-span-12 lg:col-span-5 h-[400px] lg:h-[500px] overflow-hidden relative border-r border-white/5 pr-4">
                             {/* Gradient Masks for smooth fade in/out perception */}
                             <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-black to-transparent z-20 pointer-events-none" />
                             <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
@@ -221,7 +221,7 @@ export default function Certificates() {
                         </div>
 
                         {/* Right Column: The Preview */}
-                        <div className="col-span-12 lg:col-span-7 relative h-[500px]">
+                        <div className="col-span-12 lg:col-span-7 relative h-[400px] lg:h-[500px]">
                             <div className="w-full h-full relative border border-white/10 bg-black/40 backdrop-blur-md rounded-xl overflow-hidden group">
                                 {/* CRT Scanline Overlay */}
                                 <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20" />
@@ -257,23 +257,23 @@ export default function Certificates() {
                                 </div>
 
                                 {/* Info Overlay */}
-                                <div className="absolute bottom-0 left-0 w-full p-8 z-30 bg-gradient-to-t from-black/90 to-transparent">
-                                    <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 mb-2">
+                                <div className="absolute bottom-0 left-0 w-full p-4 sm:p-6 md:p-8 z-30 bg-gradient-to-t from-black/90 to-transparent">
+                                    <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-neutral-400 mb-2">
                                         <Hash className="w-3 h-3" />
                                         <span>ID: {hoveredCert.id_code || `CERT_00${hoveredCert.id}`}</span>
                                     </div>
-                                    <h2 className="text-3xl md:text-4xl font-display font-bold text-white uppercase mb-4 max-w-lg leading-tight drop-shadow-lg">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-bold text-white uppercase mb-3 sm:mb-4 max-w-lg leading-tight drop-shadow-lg">
                                         {hoveredCert.title}
                                     </h2>
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex gap-6 md:gap-12">
+                                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-12">
                                             <div className="flex flex-col">
-                                                <span className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Issued On</span>
-                                                <span className="text-sm font-mono text-neutral-300 bg-white/5 px-2 py-1 rounded border border-white/5">{hoveredCert.date}</span>
+                                                <span className="text-[9px] sm:text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Issued On</span>
+                                                <span className="text-xs sm:text-sm font-mono text-neutral-300 bg-white/5 px-2 py-1 rounded border border-white/5">{hoveredCert.date}</span>
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Issuer Authority</span>
-                                                <span className="text-sm font-mono text-neon-main decoration-neon-main/50 underline underline-offset-4">{hoveredCert.issuer}</span>
+                                                <span className="text-[9px] sm:text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Issuer Authority</span>
+                                                <span className="text-xs sm:text-sm font-mono text-neon-main decoration-neon-main/50 underline underline-offset-4">{hoveredCert.issuer}</span>
                                             </div>
                                         </div>
 
@@ -282,9 +282,9 @@ export default function Certificates() {
                                                 href={hoveredCert.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="p-3 bg-white text-black rounded-full hover:bg-neon-main transition-colors group/link"
+                                                className="p-2 sm:p-3 bg-white text-black rounded-full hover:bg-neon-main transition-colors group/link flex-shrink-0"
                                             >
-                                                <ExternalLink className="w-5 h-5 group-hover/link:rotate-45 transition-transform duration-300" />
+                                                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover/link:rotate-45 transition-transform duration-300" />
                                             </a>
                                         )}
                                     </div>

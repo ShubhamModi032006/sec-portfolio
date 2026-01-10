@@ -198,7 +198,7 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
                 rotateY,
                 transformStyle: "preserve-3d"
             }}
-            className="relative w-full h-[500px] bg-neutral-900 border border-white/10 rounded-3xl overflow-hidden group cursor-none"
+            className="relative w-full h-[400px] sm:h-[450px] md:h-[500px] bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-none"
         >
             <div
                 style={{ transform: "translateZ(0px)" }}
@@ -239,10 +239,10 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent opacity-80 z-20" />
             </div>
 
-            <div style={{ transform: "translateZ(50px)" }} className="relative z-30 h-full p-8 flex flex-col justify-between pointer-events-none">
-                <div className="flex justify-between items-start pointer-events-auto">
-                    <span className="px-3 py-1 rounded-full border border-white/10 text-xs font-mono bg-black/40 backdrop-blur-md text-white/80">{project.category}</span>
-                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+            <div style={{ transform: "translateZ(50px)" }} className="relative z-30 h-full p-4 sm:p-6 md:p-8 flex flex-col justify-between pointer-events-none">
+                <div className="flex justify-between items-start pointer-events-auto flex-wrap gap-2">
+                    <span className="px-2 sm:px-3 py-1 rounded-full border border-white/10 text-[10px] sm:text-xs font-mono bg-black/40 backdrop-blur-md text-white/80">{project.category}</span>
+                    <div className="flex gap-1 sm:gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 flex-wrap">
                         {project.demoVideo && (
                             <>
                                 <ActionButton
@@ -261,13 +261,13 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
                 </div>
 
                 <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-4xl md:text-5xl font-display font-bold uppercase mb-4 text-white drop-shadow-lg">{project.title}</h3>
-                    <p className="text-neutral-300 text-sm md:text-base line-clamp-2 mb-4 max-w-md bg-black/50 p-2 rounded-lg backdrop-blur-sm border border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold uppercase mb-2 sm:mb-4 text-white drop-shadow-lg">{project.title}</h3>
+                    <p className="text-neutral-300 text-xs sm:text-sm md:text-base line-clamp-2 mb-2 sm:mb-4 max-w-md bg-black/50 p-2 rounded-lg backdrop-blur-sm border border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                         {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                    <div className="flex flex-wrap gap-1 sm:gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                         {project.technologies.map((tech, i) => (
-                            <span key={i} className="text-xs uppercase tracking-wider text-neon-main font-bold shadow-black drop-shadow-md">
+                            <span key={i} className="text-[10px] sm:text-xs uppercase tracking-wider text-neon-main font-bold shadow-black drop-shadow-md">
                                 #{tech}
                             </span>
                         ))}
@@ -282,13 +282,13 @@ export default function Projects() {
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
     return (
-        <section id="projects" className="py-32 container mx-auto px-4 z-10 relative">
-            <div className="flex items-end justify-between mb-16">
-                <h2 className="text-6xl md:text-8xl font-display font-bold uppercase leading-none">Selected<br />Works</h2>
-                <p className="text-xl text-neutral-400 hidden md:block max-w-sm">A collection of digital products, websites, and experiences built with modern technologies.</p>
+        <section id="projects" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6 md:px-4 z-10 relative">
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 sm:mb-12 md:mb-16 gap-4">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold uppercase leading-none">Selected<br />Works</h2>
+                <p className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-sm">A collection of digital products, websites, and experiences built with modern technologies.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 {projects.map((project) => (
                     <ProjectCard key={project.id} project={project} onVideoClick={setSelectedVideo} />
                 ))}
