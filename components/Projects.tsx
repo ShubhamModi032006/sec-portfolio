@@ -283,9 +283,19 @@ export default function Projects() {
 
     return (
         <section id="projects" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6 md:px-4 z-10 relative">
-            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 sm:mb-12 md:mb-16 gap-4">
-                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-display font-bold uppercase leading-none">Selected<br />Works</h2>
-                <p className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-sm">A collection of digital products, websites, and experiences built with modern technologies.</p>
+            <div className="mb-10 sm:mb-12 md:mb-16">
+                <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase mb-4 sm:mb-6"
+                >
+                    Selected<span className="text-neon-main">.</span>Works
+                </motion.h2>
+                <div className="h-1 w-16 sm:w-20 bg-neon-main mb-4 sm:mb-6" />
+                <p className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-xl font-light">
+                    A collection of digital products, websites, and experiences built with modern technologies.
+                </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">

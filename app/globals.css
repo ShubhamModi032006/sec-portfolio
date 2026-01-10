@@ -17,6 +17,20 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
+/* Show default cursor on mobile devices */
+@media (max-width: 767px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Also check for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
 /* Grain Overlay */
 .grain-overlay {
   position: fixed;

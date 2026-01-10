@@ -158,7 +158,7 @@ export default function Certificates() {
                     {/* Header */}
                     <div className="flex flex-col items-start mb-6 sm:mb-8 md:mb-16 select-none relative z-10">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold uppercase leading-none text-white relative">
-                            Licenses & <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700">Certifications</span>
+                            &<span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700">Certifications</span>
                             <span className="block h-1 w-16 sm:w-20 md:w-24 bg-neon-main mt-2 sm:mt-3 md:mt-4 shadow-[0_0_20px_rgba(var(--neon-main),0.5)]" />
                         </h2>
                         <div className="mt-4 sm:mt-6 flex items-center gap-2 font-mono text-xs sm:text-sm text-neon-main">

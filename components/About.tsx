@@ -97,7 +97,7 @@ const GithubActivity = () => {
 
             <div className="flex flex-col items-center w-full">
                 {/* Month Labels */}
-                <div className="flex gap-[3px] sm:gap-[4px] mb-1.5 sm:mb-2 w-full px-2 sm:px-4 pb-1">
+                <div className="flex gap-[2px] sm:gap-[3px] mb-0.5 sm:mb-1 w-full pb-0.5 justify-center">
                     {Array.from({ length: weeks }).map((_, weekIndex) => {
                         const currentMonth = getWeekMonth(weekIndex);
                         const nextMonth = getWeekMonth(weekIndex + 1);
@@ -110,13 +110,13 @@ const GithubActivity = () => {
                         const showLabel = isNewMonth || isFirstWeekOfBlock;
 
                         return (
-                            <div key={weekIndex} className="w-2 sm:w-2.5 md:w-3 relative h-5 sm:h-6 text-center">
+                            <div key={weekIndex} className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 relative text-center flex-shrink-0">
                                 {showLabel && (
-                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                                        <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium leading-none mb-0.5 sm:mb-1 tracking-tighter">
+                                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 flex flex-col items-center mb-0.5">
+                                        <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium leading-none tracking-tighter whitespace-nowrap">
                                             {currentMonth}
                                         </span>
-                                        <ChevronDown className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-neutral-600/80" />
+                                        <ChevronDown className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-neutral-600/80 mt-0.5" />
                                     </div>
                                 )}
                             </div>
@@ -125,7 +125,7 @@ const GithubActivity = () => {
                 </div>
 
                 {/* Grid */}
-                <div className="flex gap-[2px] sm:gap-[3px]">
+                <div className="flex gap-[2px] sm:gap-[3px] justify-center">
                     {Array.from({ length: weeks }).map((_, weekIndex) => (
                         <div key={weekIndex} className="flex flex-col gap-[2px] sm:gap-[3px]">
                             {Array.from({ length: daysPerWeek }).map((_, dayIndex) => {
