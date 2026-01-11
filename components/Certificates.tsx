@@ -22,8 +22,8 @@ const certificates: Certificate[] = [
         title: "Node.js (Intermediate)",
         issuer: "HackerRank",
         date: "2025",
-        image: "/nodejs_intermediate certificate_page-0001.jpg",
-        link: "https://www.hackerrank.com/certificates/iframe/838973719053", // Assuming user will update link or I keep generic
+        image: "/nodejs_intermediate_certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/61af0bdbf806",
         id_code: "NODE_INT_01",
         type: "backend"
     },
@@ -32,8 +32,8 @@ const certificates: Certificate[] = [
         title: "Rest API (Intermediate)",
         issuer: "HackerRank",
         date: "2025",
-        image: "/rest_api_intermediate certificate_page-0001.jpg",
-        link: "https://www.hackerrank.com/certificates/iframe/325791240683",
+        image: "/rest_api_intermediate_certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/c45504a6100c",
         id_code: "REST_INT_02",
         type: "backend"
     },
@@ -42,7 +42,7 @@ const certificates: Certificate[] = [
         title: "JavaScript (Intermediate)",
         issuer: "HackerRank",
         date: "2025",
-        image: "/javascript_intermediate certificate_page-0001.jpg",
+        image: "/javascript_intermediate_certificate_page-0001.jpg",
         link: "https://www.hackerrank.com/certificates/ed715b831fbf",
         id_code: "ED7158831FBF",
         type: "code"
@@ -52,8 +52,8 @@ const certificates: Certificate[] = [
         title: "Problem Solving (Intermediate)",
         issuer: "HackerRank",
         date: "2025",
-        image: "/problem_solving_intermediate certificate_page-0001.jpg",
-        link: "https://www.hackerrank.com/certificates/iframe/920384712039",
+        image: "/problem_solving_intermediate_certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/9f915b23d21b",
         id_code: "PS_INT_04",
         type: "algo"
     },
@@ -63,7 +63,7 @@ const certificates: Certificate[] = [
         issuer: "Microsoft / Simplilearn",
         date: "May 2025",
         image: "/github_page-0001.jpg",
-        link: "https://certificates.simplicdn.net/share/8363721_87130481747671251510.pdf",
+        link: "https://simpli-web.app.link/e/j41OGmlBGZb",
         id_code: "8363721",
         type: "ai"
     },
@@ -73,7 +73,7 @@ const certificates: Certificate[] = [
         issuer: "AWS / Simplilearn",
         date: "May 2025",
         image: "/Amazon_documentDB_page-0001.jpg",
-        link: "https://certificates.simplicdn.net/share/8365040_87130481747713352033.pdf",
+        link: "https://simpli-web.app.link/e/45TjJYuBGZb",
         id_code: "8365040",
         type: "cloud"
     },
@@ -82,7 +82,7 @@ const certificates: Certificate[] = [
         title: "Intro to Azure Services",
         issuer: "Simplilearn",
         date: "May 2025",
-        image: "/Basic Azure services_page-0001.jpg",
+        image: "/Basic_Azure_services_page-0001.jpg",
         link: "#",
         id_code: "8381989",
         type: "cloud"
@@ -94,8 +94,8 @@ const certificates: Certificate[] = [
         title: "React (Basic)",
         issuer: "HackerRank",
         date: "2025",
-        image: "/react_basic certificate_page-0001.jpg",
-        link: "https://www.hackerrank.com/certificates/iframe/849201837482",
+        image: "/react_basic_certificate_page-0001.jpg",
+        link: "https://www.hackerrank.com/certificates/be86f7642999",
         id_code: "REACT_bas_08",
         type: "frontend"
     },
@@ -104,7 +104,7 @@ const certificates: Certificate[] = [
         title: "SQL (Basic)",
         issuer: "HackerRank",
         date: "2025",
-        image: "/sql_basic certificate_page-0001.jpg",
+        image: "/sql_basic_certificate_page-0001.jpg",
         link: "https://www.hackerrank.com/certificates/6f817e93f1c3",
         id_code: "6F817E93F1C3",
         type: "database"
@@ -116,7 +116,7 @@ const certificates: Certificate[] = [
         title: "Problem Solving (Basic)",
         issuer: "HackerRank",
         date: "May 2025",
-        image: "/problem_solving_basic certificate_page-0001.jpg",
+        image: "/problem_solving_basic_certificate_page-0001.jpg",
         link: "https://www.hackerrank.com/certificates/66be564aa173",
         id_code: "66BE564AA173",
         type: "algo"
@@ -126,7 +126,7 @@ const certificates: Certificate[] = [
         title: "CSS (Basic)",
         issuer: "HackerRank",
         date: "May 2025",
-        image: "/css certificate_page-0001.jpg",
+        image: "/css_certificate_page-0001.jpg",
         link: "https://www.hackerrank.com/certificates/907dd2eac522",
         id_code: "907DD2EAC522",
         type: "frontend"
