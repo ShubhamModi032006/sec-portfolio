@@ -251,7 +251,7 @@ export default function About() {
                 <Box className="md:col-span-1 md:row-span-2 relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden">
                     <div className="absolute inset-0 bg-neutral-900 z-0">
                         <img
-                            src="https://res.cloudinary.com/dqhn4dq02/image/upload/v1740113553/jm7lzaefxenoz27qzxfz.jpg"
+                            src="/shubham.jpg"
                             alt="Shubham Modi"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                         />
