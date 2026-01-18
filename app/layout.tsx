@@ -4,25 +4,29 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
 import SmoothScroll from '@/components/SmoothScroll';
-import JsonLd from '@/components/seo/JsonLd';
+import Schema from '@/components/seo/Schema';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' });
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-oswald' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://shubhammodi.me'),
   title: {
     default: 'Shubham Modi | Full Stack Developer & MERN Expert',
     template: '%s | Shubham Modi'
   },
   description: 'Shubham Modi is a Full Stack Developer based in India, specializing in MERN stack, Next.js, and C++ for scalable web applications.',
-  keywords: ['Shubham Modi', 'Full Stack Developer', 'MERN Stack', 'React Developer', 'Next.js Portfolio', 'Freelance Web Developer India'],
-  authors: [{ name: 'Shubham Modi', url: 'https://shubhammodi.netlify.app' }],
+  keywords: ['Shubham Modi', 'Full Stack Developer', 'MERN Stack', 'Next.js Portfolio', 'Software Engineer India'],
+  authors: [{ name: 'Shubham Modi', url: 'https://shubhammodi.me' }],
   creator: 'Shubham Modi',
+  alternates: {
+    canonical: 'https://shubhammodi.me',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://shubhammodi.netlify.app',
+    url: 'https://shubhammodi.me',
     title: 'Shubham Modi | Full Stack Developer & MERN Expert',
     description: 'Shubham Modi is a Full Stack Developer based in India, specializing in MERN stack, Next.js, and C++ for scalable web applications.',
     siteName: 'Shubham Modi Portfolio',
@@ -63,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`}>
-        <JsonLd />
+        <Schema />
         {/* Global Texture */}
         <div className="grain-overlay" />
 
