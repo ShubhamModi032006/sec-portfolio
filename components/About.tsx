@@ -175,7 +175,7 @@ const LeetCodeStats = () => {
     const [stats, setStats] = useState<any>(null);
 
     useEffect(() => {
-        fetch('https://leetcode-stats-api.herokuapp.com/ShubhamModi032006')
+        fetch(' https://leetcard-stats.onrender.com/?username=ShubhamModi032006')
             .then(res => res.json())
             .then(data => {
                 if (data.status === 'success') {
