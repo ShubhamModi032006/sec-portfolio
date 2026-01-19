@@ -66,7 +66,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`}>
+      <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`} suppressHydrationWarning>
         <Schema />
         {/* Global Texture */}
         <div className="grain-overlay" />

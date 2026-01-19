@@ -153,7 +153,7 @@ export default function Certificates() {
         <section ref={containerRef} id="certifications" className="relative md:h-[300vh] bg-black">
             {/* Sticky Container for Desktop */}
             <div className="md:sticky md:top-0 md:h-screen md:overflow-hidden flex flex-col justify-center">
-                <div className="container mx-auto px-4 sm:px-6 md:px-4 py-16 sm:py-20 md:py-24 lg:py-0">
+                <div className="container mx-auto px-4 sm:px-6 md:px-4 py-16 sm:py-20 md:py-24 lg:pt-24 lg:pb-0">
 
                     {/* Header */}
                     <div className="flex flex-col items-start mb-6 sm:mb-8 md:mb-16 select-none relative z-10">
