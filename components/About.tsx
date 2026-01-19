@@ -175,10 +175,10 @@ const LeetCodeStats = () => {
     const [stats, setStats] = useState<any>(null);
 
     useEffect(() => {
-        fetch(' https://leetcard-stats.onrender.com/?username=ShubhamModi032006')
+        fetch('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/profile')
             .then(res => res.json())
             .then(data => {
-                if (data.status === 'success') {
+                if (data && data.totalSolved) {
                     setStats(data);
                 }
             })
