@@ -58,6 +58,10 @@
 //                     <span className="text-neon-main">#</span> History
 //                 </h2>
 //                 <div className="h-1 w-24 bg-neon-main shadow-[0_0_20px_rgba(var(--neon-main),0.5)] mb-6" />
+{/* <div className="flex items-center gap-2 font-mono text-xs sm:text-sm text-neon-main mb-6 opacity-80">
+    <span className="w-2 h-2 bg-neon-main animate-pulse" />
+                   // SYSTEM_LOG: TIMELINE_SEQUENCE_INIT
+</div> */}
 //                 <p className="text-xl text-neutral-400 max-w-xl font-light">
 //                     A chronological archive of my professional journey and educational milestones, visualized as a system log.
 //                 </p>

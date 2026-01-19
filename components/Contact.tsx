@@ -53,6 +53,10 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 border-t border-white/20 pt-8 sm:pt-10 md:pt-12 mt-12 sm:mt-16 md:mt-20">
                 <div className="flex flex-col gap-3 sm:gap-4 col-span-1 md:col-span-2">
                     <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-500">Get in touch</span>
+                    <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
+                        <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
+                         // SYSTEM_LOG: COMMUNICATION_UPLINK_ESTABLISHED
+                    </div>
                     <button
                         onClick={handleCopy}
                         className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold flex flex-wrap items-center gap-2 sm:gap-4 hover:text-neon-main transition-colors text-left group break-all"

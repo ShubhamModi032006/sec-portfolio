@@ -266,7 +266,13 @@ export default function About() {
                 {/* Bio Box */}
                 <Box className="md:col-span-2" delay={0.1}>
                     <div className="flex justify-between items-start mb-4 sm:mb-6 flex-wrap gap-2">
-                        <h3 className="text-xl sm:text-2xl font-bold text-white">About</h3>
+                        <div>
+                            <h3 className="text-xl sm:text-2xl font-bold text-white">About</h3>
+                            <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
+                                <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
+                                // SYSTEM_LOG: BIO_DATA_FETCHED
+                            </div>
+                        </div>
                         <div className="bg-neon-main/10 px-2 sm:px-3 py-1 rounded-full text-neon-main text-[9px] sm:text-[10px] font-bold uppercase tracking-widest border border-neon-main/20">
                             Open to Work
                         </div>

@@ -293,6 +293,10 @@ export default function Projects() {
                     Selected<span className="text-neon-main">.</span>Works
                 </motion.h2>
                 <div className="h-1 w-16 sm:w-20 bg-neon-main mb-4 sm:mb-6" />
+                <div className="flex items-center gap-2 font-mono text-xs sm:text-sm text-neon-main mb-4 opacity-80">
+                    <span className="w-2 h-2 bg-neon-main animate-pulse" />
+                   // SYSTEM_LOG: PROJECT_ARCHIVE_RETRIEVED [{projects.length}]
+                </div>
                 <p className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-xl font-light">
                     A collection of digital products, websites, and experiences built with modern technologies.
                 </p>
