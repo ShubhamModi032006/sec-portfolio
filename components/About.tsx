@@ -1,6 +1,6 @@
 "use client"
 import { motion } from 'framer-motion';
-import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown } from 'lucide-react';
+import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown, Trophy } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Box = ({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
@@ -173,59 +173,115 @@ const GithubActivity = () => {
 
 const LeetCodeStats = () => {
     const [stats, setStats] = useState<any>(null);
+    const [contest, setContest] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/profile')
-            .then(res => res.json())
-            .then(data => {
-                if (data && data.totalSolved) {
-                    setStats(data);
+        const fetchStats = fetch('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/profile').then(res => res.json());
+        const fetchContest = fetch('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/contest').then(res => res.json());
+
+        Promise.all([fetchStats, fetchContest])
+            .then(([statsData, contestData]) => {
+                if (statsData && statsData.totalSolved !== undefined) {
+                    setStats(statsData);
+                }
+                if (contestData) {
+                    setContest(contestData);
                 }
             })
-            .catch(err => console.error("LeetCode fetch error", err));
+            .catch(err => console.error("LeetCode fetch error", err))
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) {
+        return (
+            <div className="flex flex-col justify-between h-full animate-pulse">
+                <div className="flex items-center justify-between w-full mb-3 sm:mb-4">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white/10 rounded-full" />
+                        <div className="h-3 sm:h-4 w-16 bg-white/10 rounded" />
+                    </div>
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 bg-white/10 rounded" />
+                </div>
+
+                <div className="flex flex-col gap-2 mb-4">
+                    <div className="h-3 w-24 bg-white/10 rounded" />
+                    <div className="h-6 w-16 bg-white/10 rounded" />
+                </div>
+
+                <div className="space-y-1.5 sm:space-y-2">
+                    <div className="flex items-baseline gap-2">
+                        <div className="h-8 sm:h-10 w-20 bg-white/10 rounded" />
+                        <div className="h-3 sm:h-4 w-12 bg-white/10 rounded" />
+                    </div>
+                    <div className="h-1.5 sm:h-2 w-full bg-white/10 rounded-full" />
+                    <div className="flex justify-between pt-0.5 sm:pt-1">
+                        <div className="h-2 sm:h-2.5 w-10 bg-white/10 rounded" />
+                        <div className="h-2 sm:h-2.5 w-10 bg-white/10 rounded" />
+                        <div className="h-2 sm:h-2.5 w-10 bg-white/10 rounded" />
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     const totalSolved = stats ? stats.totalSolved : 120; // Fallback
     const easy = stats ? stats.easySolved : 45;
     const medium = stats ? stats.mediumSolved : 60;
     const hard = stats ? stats.hardSolved : 15;
-    const easyTotal = stats ? stats.totalEasy : 100; // Need totals for percentages normally, but API gives counts. Use approx width logic.
-    const mediumTotal = stats ? stats.totalMedium : 100;
-    const hardTotal = stats ? stats.totalHard : 100;
 
-    // Calculate percentages for bars roughly
-    const totalQ = easy + medium + hard;
-    const easyP = totalQ ? (easy / totalQ) * 100 : 30;
-    const mediumP = totalQ ? (medium / totalQ) * 100 : 50;
-    const hardP = totalQ ? (hard / totalQ) * 100 : 20;
+    // Safety check for division by zero
+    const totalQ = easy + medium + hard || 1;
+    const easyP = (easy / totalQ) * 100;
+    const mediumP = (medium / totalQ) * 100;
+    const hardP = (hard / totalQ) * 100;
+
+    const rating = contest?.contestRating ? Math.round(contest.contestRating) : 'N/A';
+    const topPercent = contest?.contestTopPercentage ? contest.contestTopPercentage : null;
 
     return (
-        <div className="flex flex-col justify-between h-full">
-            <div className="flex items-center justify-between w-full mb-3 sm:mb-4">
-                <div className="flex items-center gap-1.5 sm:gap-2 text-neon-main">
+        <div className="flex flex-col justify-between h-full relative">
+            <div className="flex items-center justify-between w-full mb-4">
+                <div className="flex items-center gap-2 text-neon-main">
                     <img
                         src="https://cdn.simpleicons.org/leetcode/CCFF00"
                         alt="LeetCode"
-                        className="w-4 h-4 sm:w-5 sm:h-5"
+                        className="w-5 h-5"
                     />
-                    <span className="uppercase tracking-widest text-[10px] sm:text-xs">LeetCode</span>
+                    <span className="uppercase tracking-widest text-xs font-bold">LeetCode</span>
                 </div>
-                <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-neutral-500" />
+                <ArrowUpRight className="w-4 h-4 text-neutral-500" />
             </div>
-            <div className="space-y-1.5 sm:space-y-2">
-                <div className="flex items-baseline gap-1.5 sm:gap-2">
-                    <h4 className="text-3xl sm:text-4xl font-display font-bold">{totalSolved}</h4>
-                    <span className="text-xs sm:text-sm text-neutral-400 font-medium">Solved</span>
+
+            <div className="flex flex-col mb-4">
+                <div className="flex items-center gap-2 mb-1">
+                    <Trophy className="w-3 h-3 text-yellow-500" />
+                    <span className="text-[10px] uppercase tracking-wider text-neutral-400">Contest Rating</span>
                 </div>
-                <div className="flex gap-1 h-1.5 sm:h-2 w-full bg-neutral-800 rounded-full overflow-hidden">
+                <div className="flex items-baseline gap-3">
+                    <h4 className="text-2xl font-display font-bold text-white tracking-tight">{rating}</h4>
+                    {topPercent && (
+                        <span className="text-[10px] font-mono text-neon-main bg-neon-main/10 px-1.5 py-0.5 rounded border border-neon-main/20">
+                            Top {topPercent}%
+                        </span>
+                    )}
+                </div>
+            </div>
+
+            <div className="space-y-2">
+                <div className="flex items-baseline gap-2">
+                    <h4 className="text-4xl font-display font-bold text-white leading-none">{totalSolved}</h4>
+                    <span className="text-sm text-neutral-500 font-medium">Solved</span>
+                </div>
+                <div className="flex gap-1 h-1.5 w-full bg-neutral-800 rounded-full overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: `${easyP}%` }} transition={{ duration: 1 }} className="h-full bg-green-500" />
                     <motion.div initial={{ width: 0 }} animate={{ width: `${mediumP}%` }} transition={{ duration: 1, delay: 0.2 }} className="h-full bg-yellow-500" />
                     <motion.div initial={{ width: 0 }} animate={{ width: `${hardP}%` }} transition={{ duration: 1, delay: 0.4 }} className="h-full bg-red-500" />
                 </div>
-                <div className="flex justify-between text-[9px] sm:text-[10px] uppercase tracking-wider text-neutral-500 pt-0.5 sm:pt-1">
-                    <span>Easy: {easy}</span>
-                    <span>Med: {medium}</span>
-                    <span>Hard: {hard}</span>
+                <div className="flex justify-between text-[10px] font-mono text-neutral-500 pt-1">
+                    <span className="hover:text-green-400 transition-colors">Easy: {easy}</span>
+                    <span className="hover:text-yellow-400 transition-colors">Med: {medium}</span>
+                    <span className="hover:text-red-400 transition-colors">Hard: {hard}</span>
                 </div>
             </div>
         </div>
@@ -246,7 +302,7 @@ export default function About() {
 
     return (
         <section id="about" className="min-h-screen py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6 md:px-4 flex flex-col justify-center relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 sm:gap-6 h-auto md:h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 sm:gap-6 h-auto md:min-h-[600px]">
                 {/* Photo Box */}
                 <Box className="md:col-span-1 md:row-span-2 relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden">
                     <div className="absolute inset-0 bg-neutral-900 z-0">
@@ -265,7 +321,7 @@ export default function About() {
 
                 {/* Bio Box */}
                 <Box className="md:col-span-2" delay={0.1}>
-                    <div className="flex justify-between items-start mb-4 sm:mb-6 flex-wrap gap-2">
+                    <div className="flex justify-between items-start mb-6 md:mb-10 flex-wrap gap-2">
                         <div>
                             <h3 className="text-xl sm:text-2xl font-bold text-white">About</h3>
                             <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
@@ -277,7 +333,7 @@ export default function About() {
                             Open to Work
                         </div>
                     </div>
-                    <p className="text-base sm:text-xl md:text-2xl text-neutral-300 leading-relaxed font-sans font-light">
+                    <p className="text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed font-sans font-light">
                         I'm a <span className="text-white font-medium">Full Stack Developer</span> passionate about building robust web applications. I transform ideas into complex <span className="text-white font-medium">MERN stack solutions</span> and treat every project as a piece of art.
                     </p>
                     <div className="mt-6 sm:mt-8 flex gap-4">
