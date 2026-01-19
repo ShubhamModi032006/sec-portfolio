@@ -147,7 +147,7 @@ export default function Certificates() {
     // Showing 5 items (approx 500px), Total 11 items.
     // We need to scroll roughly 55-60% of the list height to reach the end.
     // UseTransform maps 0-1 (container scroll) to Y translation of the list.
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
     return (
         <section ref={containerRef} id="certifications" className="relative md:h-[300vh] bg-black">
@@ -221,7 +221,7 @@ export default function Certificates() {
                         </div>
 
                         {/* Right Column: The Preview */}
-                        <div className="col-span-12 lg:col-span-7 relative h-[400px] lg:h-[500px]">
+                        <div className="col-span-12 lg:col-span-7 relative h-[350px] lg:h-[450px]">
                             <div className="w-full h-full relative border border-white/10 bg-black/40 backdrop-blur-md rounded-xl overflow-hidden group">
                                 {/* CRT Scanline Overlay */}
                                 <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-20" />
