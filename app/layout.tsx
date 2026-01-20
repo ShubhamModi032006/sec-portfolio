@@ -10,40 +10,73 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' });
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-oswald' });
 
+const DOMAIN_URL = "https://shubhammodi.me";
+
+const SITE_CONFIG = {
+  title: "Shubham Modi - Full-Stack Developer Portfolio | MERN Stack",
+  description: "Portfolio of Shubham Modi, a full-stack developer specializing in the MERN stack (MongoDB, Express, React, Node.js), Next.js, and scaling web applications.",
+  url: DOMAIN_URL,
+  siteName: "Shubham Modi",
+  keywords: [
+    "Shubham Modi",
+    "Full-Stack Developer",
+    "MERN Stack",
+    "Next.js",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "JavaScript",
+    "India",
+    "Freelance Developer",
+    "Software Engineer",
+    "Web Development",
+    "UI/UX Design",
+    "Frontend Developer",
+    "Backend Developer",
+    "React Developer India",
+    "Next.js Expert",
+    "Scalable Web Apps",
+    "C++",
+    "System Design"
+  ],
+  ogImage: "/shubham.jpg",
+  logo: "/favicon.ico",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://shubhammodi.me'),
+  metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: 'Shubham Modi | Full Stack Developer & MERN Expert',
-    template: '%s | Shubham Modi'
+    default: SITE_CONFIG.title,
+    template: `%s | ${SITE_CONFIG.siteName}`
   },
-  description: 'Shubham Modi is a Full Stack Developer based in India, specializing in MERN stack, Next.js, and C++ for scalable web applications.',
-  keywords: ['Shubham Modi', 'Full Stack Developer', 'MERN Stack', 'Next.js Portfolio', 'Software Engineer India'],
-  authors: [{ name: 'Shubham Modi', url: 'https://shubhammodi.me' }],
-  creator: 'Shubham Modi',
+  description: SITE_CONFIG.description,
+  keywords: SITE_CONFIG.keywords,
+  authors: [{ name: SITE_CONFIG.siteName, url: SITE_CONFIG.url }],
+  creator: SITE_CONFIG.siteName,
   alternates: {
-    canonical: 'https://shubhammodi.me',
+    canonical: SITE_CONFIG.url,
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://shubhammodi.me',
-    title: 'Shubham Modi | Full Stack Developer & MERN Expert',
-    description: 'Shubham Modi is a Full Stack Developer based in India, specializing in MERN stack, Next.js, and C++ for scalable web applications.',
-    siteName: 'Shubham Modi Portfolio',
+    url: SITE_CONFIG.url,
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
+    siteName: SITE_CONFIG.siteName,
     images: [
       {
-        url: '/og-image.jpg',
+        url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Shubham Modi Portfolio'
+        alt: SITE_CONFIG.title
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shubham Modi | Full Stack Developer & MERN Expert',
-    description: 'Shubham Modi is a Full Stack Developer based in India, specializing in MERN stack, Next.js, and C++ for scalable web applications.',
-    images: ['/og-image.jpg'],
+    title: SITE_CONFIG.title,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.ogImage],
     creator: '@shubham_modi_cg'
   },
   robots: {
@@ -57,6 +90,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: SITE_CONFIG.logo,
+  }
 };
 
 export default function RootLayout({
