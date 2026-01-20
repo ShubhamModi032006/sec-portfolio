@@ -19,6 +19,7 @@ const SITE_CONFIG = {
   siteName: "Shubham Modi",
   keywords: [
     "Shubham Modi",
+    "codinggita",
     "Full-Stack Developer",
     "MERN Stack",
     "Next.js",
