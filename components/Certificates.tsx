@@ -285,6 +285,7 @@ export default function Certificates() {
                                                 href={hoveredCert.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
+                                                aria-label={`View ${hoveredCert.title} Certificate`}
                                                 className="p-2 sm:p-3 bg-white text-black rounded-full hover:bg-neon-main transition-colors group/link flex-shrink-0"
                                             >
                                                 <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 group-hover/link:rotate-45 transition-transform duration-300" />
@@ -320,7 +321,7 @@ export default function Certificates() {
                                         <span>{cert.date}</span>
                                     </div>
                                     {cert.link && cert.link !== "#" && (
-                                        <a href={cert.link} target="_blank" className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-neon-main transition-colors">
+                                        <a href={cert.link} target="_blank" aria-label={`View ${cert.title}`} className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-neon-main transition-colors">
                                             View Credential <ExternalLink className="w-4 h-4" />
                                         </a>
                                     )}

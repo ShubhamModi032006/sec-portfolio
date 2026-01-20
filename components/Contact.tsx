@@ -59,6 +59,7 @@ export default function Contact() {
                     </div>
                     <button
                         onClick={handleCopy}
+                        aria-label="Copy Email Address"
                         className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold flex flex-wrap items-center gap-2 sm:gap-4 hover:text-neon-main transition-colors text-left group break-all"
                     >
                         <span className="break-all">{email}</span>
@@ -96,7 +97,7 @@ export default function Contact() {
                         <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-500">Socials</span>
                         <div className="flex flex-col gap-1.5 sm:gap-2">
                             {socials.map(social => (
-                                <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-base sm:text-lg md:text-xl hover:text-neon-main transition-colors group">
+                                <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${social.name}`} className="flex items-center gap-2 text-base sm:text-lg md:text-xl hover:text-neon-main transition-colors group">
                                     <span className="relative">
                                         {social.name}
                                         <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-neon-main group-hover:w-full transition-all duration-300" />
@@ -132,7 +133,7 @@ export default function Contact() {
                                 placeholder="Description"
                                 className="w-full bg-transparent border-b border-white/20 py-2 text-xs sm:text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-neon-main transition-colors resize-none"
                             />
-                            <button className="self-start mt-1 sm:mt-2 px-4 sm:px-6 py-1.5 sm:py-2 bg-white/5 hover:bg-neon-main hover:text-black border border-white/10 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 group">
+                            <button aria-label="Send Message" className="self-start mt-1 sm:mt-2 px-4 sm:px-6 py-1.5 sm:py-2 bg-white/5 hover:bg-neon-main hover:text-black border border-white/10 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 group">
                                 Send
                                 <Send className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </button>

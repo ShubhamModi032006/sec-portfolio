@@ -166,7 +166,7 @@ const GithubActivity = () => {
                 </div>
             </div>
 
-            <div className="flex items-center gap-1.5 sm:gap-2 mt-3 sm:mt-4 text-[9px] sm:text-[10px] text-neutral-500">
+            <div className="flex items-center gap-1.5 sm:gap-2 mt-3 sm:mt-4 text-[9px] sm:text-[10px] text-neutral-400">
                 <span>Less</span>
                 <div className="flex gap-[1px] sm:gap-[2px]">
                     {[0, 1, 2, 3, 4].map(l => (
@@ -267,7 +267,7 @@ const LeetCodeStats = () => {
             <div className="flex flex-col mb-4">
                 <div className="flex items-center gap-2 mb-1">
                     <Trophy className="w-3 h-3 text-yellow-500" />
-                    <span className="text-[10px] uppercase tracking-wider text-neutral-400">Contest Rating</span>
+                    <span className="text-[10px] uppercase tracking-wider text-neutral-300">Contest Rating</span>
                 </div>
                 <div className="flex items-baseline gap-3">
                     <h4 className="text-2xl font-display font-bold text-white tracking-tight">{rating}</h4>
@@ -282,14 +282,14 @@ const LeetCodeStats = () => {
             <div className="space-y-2">
                 <div className="flex items-baseline gap-2">
                     <h4 className="text-4xl font-display font-bold text-white leading-none">{totalSolved}</h4>
-                    <span className="text-sm text-neutral-500 font-medium">Solved</span>
+                    <span className="text-sm text-neutral-400 font-medium">Solved</span>
                 </div>
                 <div className="flex gap-1 h-1.5 w-full bg-neutral-800 rounded-full overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: `${easyP}%` }} transition={{ duration: 1 }} className="h-full bg-green-500" />
                     <motion.div initial={{ width: 0 }} animate={{ width: `${mediumP}%` }} transition={{ duration: 1, delay: 0.2 }} className="h-full bg-yellow-500" />
                     <motion.div initial={{ width: 0 }} animate={{ width: `${hardP}%` }} transition={{ duration: 1, delay: 0.4 }} className="h-full bg-red-500" />
                 </div>
-                <div className="flex justify-between text-[10px] font-mono text-neutral-500 pt-1">
+                <div className="flex justify-between text-[10px] font-mono text-neutral-400 pt-1">
                     <span className="hover:text-green-400 transition-colors">Easy: {easy}</span>
                     <span className="hover:text-yellow-400 transition-colors">Med: {medium}</span>
                     <span className="hover:text-red-400 transition-colors">Hard: {hard}</span>

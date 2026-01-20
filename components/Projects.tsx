@@ -120,6 +120,7 @@ const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: 
             <Link
                 href={href}
                 target="_blank"
+                aria-label={label}
                 className="group/btn relative flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-black rounded-full overflow-hidden transition-all duration-300 w-10 h-10 hover:w-auto hover:px-4 backdrop-blur-md"
             >
                 <div className="flex items-center gap-2 whitespace-nowrap">
@@ -135,6 +136,7 @@ const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: 
     return (
         <motion.button
             onClick={onClick}
+            aria-label={label}
             className="group/btn relative flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-black rounded-full overflow-hidden transition-all duration-300 w-10 h-10 hover:w-auto hover:px-4 backdrop-blur-md"
         >
             <div className="flex items-center gap-2 whitespace-nowrap">
@@ -301,7 +303,7 @@ export default function Projects() {
                     <span className="w-2 h-2 bg-neon-main animate-pulse" />
                    // SYSTEM_LOG: PROJECT_ARCHIVE_RETRIEVED [{projects.length}]
                 </div>
-                <p className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-xl font-light">
+                <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-xl font-light">
                     A collection of digital products, websites, and experiences built with modern technologies.
                 </p>
             </div>
@@ -321,7 +323,7 @@ export default function Projects() {
                         onClick={() => setSelectedVideo(null)}
                         className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-20"
                     >
-                        <button className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors">
+                        <button aria-label="Close Video" className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors">
                             <X className="w-10 h-10" />
                         </button>
                         <motion.div
