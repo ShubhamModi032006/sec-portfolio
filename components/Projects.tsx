@@ -161,8 +161,11 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
     const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
     const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
 
-    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-        const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    const [rect, setRect] = useState<DOMRect | null>(null);
+
+    function handleMouseMove({ clientX, clientY }: React.MouseEvent) {
+        if (!rect) return;
+        const { left, top, width, height } = rect;
         const xPct = (clientX - left) / width - 0.5;
         const yPct = (clientY - top) / height - 0.5;
         x.set(xPct);
@@ -173,11 +176,13 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
         x.set(0);
         y.set(0);
         setIsHovered(false);
-        setIsMuted(true); // Reset mute state on leave
+        setIsMuted(true);
+        setRect(null);
     }
 
-    function handleMouseEnter() {
+    function handleMouseEnter(e: React.MouseEvent) {
         setIsHovered(true);
+        setRect(e.currentTarget.getBoundingClientRect());
     }
 
     // Handle Video Playback Speed

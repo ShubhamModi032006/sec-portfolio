@@ -121,7 +121,7 @@ const GithubActivity = () => {
                             <div key={weekIndex} className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 relative text-center flex-shrink-0">
                                 {showLabel && (
                                     <div className="absolute bottom-full left-1/2 -translate-x-1/2 flex flex-col items-center mb-0.5">
-                                        <span className="text-[9px] sm:text-[10px] text-neutral-500 font-medium leading-none tracking-tighter whitespace-nowrap">
+                                        <span className="text-[9px] sm:text-[10px] text-neutral-400 font-medium leading-none tracking-tighter whitespace-nowrap">
                                             {currentMonth}
                                         </span>
                                         <ChevronDown className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-neutral-600/80 mt-0.5" />
@@ -337,7 +337,7 @@ export default function About() {
                 <Box className="md:col-span-2" delay={0.1}>
                     <div className="flex justify-between items-start mb-6 md:mb-10 flex-wrap gap-2">
                         <div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-white">About</h3>
+                            <h2 className="text-xl sm:text-2xl font-bold text-white">About</h2>
                             <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
                                 <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
                                 // SYSTEM_LOG: BIO_DATA_FETCHED
@@ -353,12 +353,12 @@ export default function About() {
                     <div className="mt-6 sm:mt-8 flex gap-4">
                         <div className="flex flex-col">
                             <span className="text-2xl sm:text-3xl font-bold font-display text-white">#3</span>
-                            <span className="text-[10px] sm:text-xs uppercase text-neutral-500 tracking-wider">Major Projects</span>
+                            <span className="text-[10px] sm:text-xs uppercase text-neutral-400 tracking-wider">Major Projects</span>
                         </div>
                         <div className="w-[1px] h-8 sm:h-10 bg-white/10" />
                         <div className="flex flex-col">
                             <span className="text-2xl sm:text-3xl font-bold font-display text-white">100%</span>
-                            <span className="text-[10px] sm:text-xs uppercase text-neutral-500 tracking-wider">Commitment</span>
+                            <span className="text-[10px] sm:text-xs uppercase text-neutral-400 tracking-wider">Commitment</span>
                         </div>
                     </div>
                 </Box>

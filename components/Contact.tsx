@@ -52,7 +52,7 @@ export default function Contact() {
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 border-t border-white/20 pt-8 sm:pt-10 md:pt-12 mt-12 sm:mt-16 md:mt-20">
                 <div className="flex flex-col gap-3 sm:gap-4 col-span-1 md:col-span-2">
-                    <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-500">Get in touch</span>
+                    <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-400">Get in touch</span>
                     <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
                         <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
                          // SYSTEM_LOG: COMMUNICATION_UPLINK_ESTABLISHED
@@ -94,7 +94,7 @@ export default function Contact() {
 
                 <div className="flex flex-col gap-6 sm:gap-8 justify-between">
                     <div className="flex flex-col gap-3 sm:gap-4">
-                        <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-500">Socials</span>
+                        <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-400">Socials</span>
                         <div className="flex flex-col gap-1.5 sm:gap-2">
                             {socials.map(social => (
                                 <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${social.name}`} className="flex items-center gap-2 text-base sm:text-lg md:text-xl hover:text-neon-main transition-colors group">
@@ -109,7 +109,7 @@ export default function Contact() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-500">Local Time</span>
+                        <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-400">Local Time</span>
                         <div className="flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                             <p className="text-sm sm:text-base md:text-lg font-mono text-neutral-300">
@@ -121,7 +121,7 @@ export default function Contact() {
 
                 <div className="flex flex-col justify-between h-full gap-6 sm:gap-8">
                     <div className="flex flex-col gap-4 sm:gap-6">
-                        <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-500">Send a Message</span>
+                        <span className="uppercase text-[10px] sm:text-xs tracking-widest text-neutral-400">Send a Message</span>
                         <form className="flex flex-col gap-3 sm:gap-4" onSubmit={(e) => e.preventDefault()}>
                             <input
                                 type="email"
@@ -140,7 +140,7 @@ export default function Contact() {
                         </form>
                     </div>
 
-                    <div className="text-neutral-600 text-xs sm:text-sm mt-auto">
+                    <div className="text-neutral-400 text-xs sm:text-sm mt-auto">
                         &copy; 2025 Shubham Modi.
                     </div>
                 </div>
