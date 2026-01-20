@@ -14,11 +14,13 @@ const DOMAIN_URL = "https://shubhammodi.me";
 
 const SITE_CONFIG = {
   title: "Shubham Modi - Full-Stack Developer Portfolio | MERN Stack",
-  description: "Portfolio of Shubham Modi, a full-stack developer specializing in the MERN stack (MongoDB, Express, React, Node.js), Next.js, and scaling web applications.",
+  description: "Portfolio of Shubham Modi, a full-stack developer specializing in the MERN stack (MongoDB, Express, React, Node.js), Next.js, and scaling web applications.currently studying at codinggita.",
   url: DOMAIN_URL,
   siteName: "Shubham Modi",
   keywords: [
     "Shubham Modi",
+    "shubhammodi",
+    "shubham modi",
     "codinggita",
     "Full-Stack Developer",
     "MERN Stack",
