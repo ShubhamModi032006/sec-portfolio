@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const marqueeItems = ["REACT", "NEXT.JS", "MONGODB", "C++", "SYSTEM DESIGN", "REACT", "NEXT.JS", "MONGODB", "C++", "SYSTEM DESIGN"];
@@ -28,10 +29,13 @@ const MernCard = ({ title, sub, icon }: { title: string, sub: string, icon: stri
     <div className="absolute top-0 right-0 p-20 sm:p-32 bg-neon-main/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-neon-main/10 transition-colors" />
 
     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-neon-main group-hover:text-black group-hover:border-neon-main transition-all duration-300 relative z-10">
-      <img
+      <Image
         src={`https://cdn.simpleicons.org/${icon}/white`}
+        width={28}
+        height={28}
         className="w-6 h-6 sm:w-7 sm:h-7 opacity-70 group-hover:brightness-0 group-hover:opacity-100 transition-all"
         alt={title}
+        unoptimized
       />
     </div>
     <div className="relative z-10">

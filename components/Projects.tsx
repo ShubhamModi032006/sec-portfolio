@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight, Github, ExternalLink, Youtube, X, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const projects = [
     {
@@ -206,10 +207,13 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
             >
                 {/* Background Image - static, darkens on hover */}
                 <div className="absolute inset-0 transition-opacity duration-500 opacity-60 group-hover:opacity-40">
-                    <img
+                    <Image
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-fill object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-fill object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                        unoptimized
                     />
                 </div>
 

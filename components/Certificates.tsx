@@ -3,6 +3,7 @@
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { ExternalLink, CheckCircle2, ChevronRight, Hash } from "lucide-react";
+import Image from "next/image";
 
 interface Certificate {
     id: number;
@@ -241,9 +242,11 @@ export default function Certificates() {
                                         transition={{ duration: 0.2 }}
                                         className="absolute inset-0 z-0"
                                     >
-                                        <img
+                                        <Image
                                             src={hoveredCert.image}
                                             alt={hoveredCert.title}
+                                            fill
+                                            sizes="(max-width: 1024px) 100vw, 60vw"
                                             className="w-full h-full object-cover opacity-80"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20 opacity-90" />
@@ -298,7 +301,13 @@ export default function Certificates() {
                         {certificates.map((cert) => (
                             <div key={cert.id} className="bg-neutral-900 border border-white/10 rounded-xl overflow-hidden flex flex-col">
                                 <div className="relative h-64 w-full">
-                                    <img src={cert.image} alt={cert.title} className="w-full h-full object-cover opacity-80" />
+                                    <Image
+                                        src={cert.image}
+                                        alt={cert.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        className="w-full h-full object-cover opacity-80"
+                                    />
                                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />
                                     <div className="absolute bottom-2 left-4">
                                         <span className="bg-neon-main text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase">Verified</span>

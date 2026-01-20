@@ -1,11 +1,14 @@
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Skills from '@/components/Skills';
 // import Experience from '@/components/Experience';
 // import ExperienceTerminal from '@/components/ExperienceTerminal';
-import Projects from '@/components/Projects';
-import Certificates from '@/components/Certificates';
-import Contact from '@/components/Contact';
+
+// Dynamic imports for components below the fold
+const Skills = dynamic(() => import('@/components/Skills'));
+const Projects = dynamic(() => import('@/components/Projects'));
+const Certificates = dynamic(() => import('@/components/Certificates'));
+const Contact = dynamic(() => import('@/components/Contact'));
 
 export default function Home() {
   return (

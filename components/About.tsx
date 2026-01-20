@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown, Trophy } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -89,7 +90,14 @@ const GithubActivity = () => {
         <div className="w-full h-full flex flex-col justify-between min-h-[160px]">
             <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
                 <div className="flex items-center gap-1.5 sm:gap-2 text-white">
-                    <img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-github-1.png" className="w-4 h-4 sm:w-5 sm:h-5 invert opacity-80" alt="GitHub" />
+                    <Image
+                        src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-github-1.png"
+                        width={20}
+                        height={20}
+                        className="w-4 h-4 sm:w-5 sm:h-5 invert opacity-80"
+                        alt="GitHub"
+                        unoptimized
+                    />
                     <span className="font-bold text-xs sm:text-sm">GitHub Activity</span>
                 </div>
                 <span className="text-[9px] sm:text-[10px] text-neutral-400">{totalContributions} contributions (Last 4 Months)</span>
@@ -243,10 +251,13 @@ const LeetCodeStats = () => {
         <div className="flex flex-col justify-between h-full relative">
             <div className="flex items-center justify-between w-full mb-4">
                 <div className="flex items-center gap-2 text-neon-main">
-                    <img
+                    <Image
                         src="https://cdn.simpleicons.org/leetcode/CCFF00"
                         alt="LeetCode"
+                        width={20}
+                        height={20}
                         className="w-5 h-5"
+                        unoptimized
                     />
                     <span className="uppercase tracking-widest text-xs font-bold">LeetCode</span>
                 </div>
@@ -306,9 +317,12 @@ export default function About() {
                 {/* Photo Box */}
                 <Box className="md:col-span-1 md:row-span-2 relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden">
                     <div className="absolute inset-0 bg-neutral-900 z-0">
-                        <img
+                        <Image
                             src="/shubham.jpg"
                             alt="Shubham Modi"
+                            fill
+                            priority
+                            sizes="(max-width: 768px) 100vw, 33vw"
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-80" />

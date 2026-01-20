@@ -28,6 +28,7 @@ const config: Config = {
       animation: {
         "scroll-left": "scroll-left 30s linear infinite",
         "scroll-right": "scroll-right 30s linear infinite",
+        "fade-in": "fadeIn 1s ease-out forwards",
       },
       keyframes: {
         "scroll-left": {
@@ -37,6 +38,10 @@ const config: Config = {
         "scroll-right": {
           "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
     },
