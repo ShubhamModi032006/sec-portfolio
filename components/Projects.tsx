@@ -299,7 +299,7 @@ export default function Projects() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-[clamp(2.2rem,10vw,10rem)] leading-[0.8] font-display font-black uppercase mb-4 sm:mb-6 break-words w-full"
+                    className="text-[clamp(2.5rem,5.1vw,10rem)] leading-[0.8] font-display font-black uppercase mb-4 sm:mb-6 break-words w-full"
                 >
                     Selected<span className="text-neon-main">.</span>Works
                 </motion.h2>

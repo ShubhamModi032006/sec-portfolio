@@ -158,7 +158,7 @@ export default function Certificates() {
 
                     {/* Header */}
                     <div className="flex flex-col items-start mb-6 sm:mb-8 md:mb-16 select-none relative z-10">
-                        <h2 className="text-[clamp(2.0rem,8.9vw,10rem)] font-display font-bold uppercase leading-none text-white relative break-words w-full">
+                        <h2 className="text-[clamp(2.2rem,6vw,10rem)] font-display font-bold uppercase leading-none text-white relative break-words w-full">
                             &<span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700">Certifications</span>
                             <span className="block h-1 w-16 sm:w-20 md:w-24 bg-neon-main mt-2 sm:mt-3 md:mt-4 shadow-[0_0_20px_rgba(var(--neon-main),0.5)]" />
                         </h2>

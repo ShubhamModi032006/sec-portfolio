@@ -77,7 +77,7 @@ export default function Skills() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-[clamp(2.0rem,8vw,10rem)] leading-[0.8] font-display font-black uppercase mb-4 sm:mb-6 break-words w-full"
+            className="text-[clamp(2.5rem,6.2vw,10rem)] leading-[0.8] font-display font-black uppercase mb-4 sm:mb-6 break-words w-full"
           >
             Tech<span className="text-neon-main">.</span>Stack
           </motion.h2>

@@ -337,7 +337,7 @@ export default function About() {
                 <Box className="md:order-1 lg:order-none md:col-span-2 lg:col-span-2" delay={0.1}>
                     <div className="flex justify-between items-start mb-6 md:mb-10 flex-wrap gap-2">
                         <div>
-                            <h2 className="text-[clamp(1.2rem,5vw,2.5rem)] font-bold text-white break-words">About</h2>
+                            <h2 className="text-[clamp(1.5rem,2.2vw,2.5rem)] font-bold text-white break-words">About</h2>
                             <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
                                 <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
                                 // SYSTEM_LOG: BIO_DATA_FETCHED
