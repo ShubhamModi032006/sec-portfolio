@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   keywords: SITE_CONFIG.keywords,
   authors: [{ name: SITE_CONFIG.siteName, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.siteName,
-  alternates: {
-    canonical: SITE_CONFIG.url,
-  },
+  // alternates: {
+  //   canonical: SITE_CONFIG.url,
+  // },
   openGraph: {
     type: 'website',
     locale: 'en_US',
