@@ -154,11 +154,11 @@ export default function Certificates() {
         <section ref={containerRef} id="certifications" className="relative md:h-[300vh] bg-black">
             {/* Sticky Container for Desktop */}
             <div className="md:sticky md:top-0 md:h-screen md:overflow-hidden flex flex-col justify-center">
-                <div className="container mx-auto px-4 sm:px-6 md:px-4 py-16 sm:py-20 md:py-24 lg:pt-24 lg:pb-0">
+                <div className="container mx-auto px-4 md:px-8 lg:px-12 py-16 sm:py-20 md:py-24 lg:pt-24 lg:pb-0">
 
                     {/* Header */}
                     <div className="flex flex-col items-start mb-6 sm:mb-8 md:mb-16 select-none relative z-10">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold uppercase leading-none text-white relative">
+                        <h2 className="text-[clamp(2.0rem,8.9vw,10rem)] font-display font-bold uppercase leading-none text-white relative break-words w-full">
                             &<span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-500 to-neutral-700">Certifications</span>
                             <span className="block h-1 w-16 sm:w-20 md:w-24 bg-neon-main mt-2 sm:mt-3 md:mt-4 shadow-[0_0_20px_rgba(var(--neon-main),0.5)]" />
                         </h2>
@@ -168,8 +168,8 @@ export default function Certificates() {
                         </div>
                     </div>
 
-                    {/* Desktop: Master-Detail Layout */}
-                    <div className="hidden md:grid grid-cols-12 gap-6 lg:gap-10 border-t border-white/10 pt-6 lg:pt-10">
+                    {/* Desktop: Master-Detail Layout (Visible only on LG+) */}
+                    <div className="hidden lg:grid grid-cols-12 gap-6 lg:gap-10 border-t border-white/10 pt-6 lg:pt-10">
                         {/* Left Column: The List - Sticky Logic Controlled by Parent Scroll */}
                         <div className="col-span-12 lg:col-span-5 h-[400px] lg:h-[500px] overflow-hidden relative border-r border-white/5 pr-4">
                             {/* Gradient Masks for smooth fade in/out perception */}
@@ -297,16 +297,16 @@ export default function Certificates() {
                         </div>
                     </div>
 
-                    {/* Mobile: Vertical Grid - Preserved for small screens */}
-                    <div className="grid grid-cols-1 gap-4 md:hidden">
+                    {/* Mobile & Tablet: Vertical Grid - Up to LG */}
+                    <div className="grid grid-cols-1 gap-4 lg:hidden">
                         {certificates.map((cert) => (
                             <div key={cert.id} className="bg-neutral-900 border border-white/10 rounded-xl overflow-hidden flex flex-col">
-                                <div className="relative h-64 w-full">
+                                <div className="relative h-64 md:h-[500px] w-full">
                                     <Image
                                         src={cert.image}
                                         alt={cert.title}
                                         fill
-                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         className="w-full h-full object-cover opacity-80"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent" />

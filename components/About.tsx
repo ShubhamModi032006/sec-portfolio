@@ -39,7 +39,7 @@ const GithubActivity = () => {
                 level: day.level,
                 date: new Date(day.date).toLocaleDateString(),
                 count: day.count
-            }));
+            }))
 
             // Sum up total contributions for the displayed period
             const total = processedData.reduce((acc: number, curr: any) => acc + curr.count, 0);
@@ -312,10 +312,10 @@ export default function About() {
     }, []);
 
     return (
-        <section id="about" className="min-h-screen py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6 md:px-4 flex flex-col justify-center relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 sm:gap-6 h-auto md:min-h-[600px]">
+        <section id="about" className="min-h-screen py-16 sm:py-24 md:py-32 container mx-auto px-4 md:px-8 lg:px-12 flex flex-col justify-center relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-none lg:grid-rows-2 gap-4 sm:gap-6 h-auto md:min-h-[600px]">
                 {/* Photo Box */}
-                <Box className="md:col-span-1 md:row-span-2 relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden">
+                <Box className="md:order-2 lg:order-none md:col-span-1 md:row-span-2 relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] overflow-hidden">
                     <div className="absolute inset-0 bg-neutral-900 z-0">
                         <Image
                             src="/shubham.jpg"
@@ -334,10 +334,10 @@ export default function About() {
                 </Box>
 
                 {/* Bio Box */}
-                <Box className="md:col-span-2" delay={0.1}>
+                <Box className="md:order-1 lg:order-none md:col-span-2 lg:col-span-2" delay={0.1}>
                     <div className="flex justify-between items-start mb-6 md:mb-10 flex-wrap gap-2">
                         <div>
-                            <h2 className="text-xl sm:text-2xl font-bold text-white">About</h2>
+                            <h2 className="text-[clamp(1.2rem,5vw,2.5rem)] font-bold text-white break-words">About</h2>
                             <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
                                 <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
                                 // SYSTEM_LOG: BIO_DATA_FETCHED
@@ -364,12 +364,12 @@ export default function About() {
                 </Box>
 
                 {/* LeetCode Box */}
-                <Box className="md:col-span-1 flex flex-col justify-between min-h-[200px]" delay={0.2}>
+                <Box className="md:order-3 lg:order-none md:col-span-1 lg:col-span-1 flex flex-col justify-between min-h-[200px]" delay={0.2}>
                     <LeetCodeStats />
                 </Box>
 
                 {/* Github Activity Box */}
-                <Box className="md:col-span-1 !p-4 sm:!p-6 flex flex-col justify-center min-h-[200px]" delay={0.3}>
+                <Box className="md:order-4 lg:order-none md:col-span-1 lg:col-span-1 !p-4 sm:!p-6 flex flex-col justify-center min-h-[200px]" delay={0.3}>
                     <GithubActivity />
                 </Box>
             </div>

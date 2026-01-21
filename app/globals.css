@@ -83,3 +83,10 @@ html.lenis body {
   background: #CCFF00;
   color: #000;
 }
+
+/* Safety for big text */
+.big-text-safe {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}

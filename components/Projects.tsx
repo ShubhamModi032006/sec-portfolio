@@ -293,13 +293,13 @@ export default function Projects() {
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
     return (
-        <section id="projects" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 sm:px-6 md:px-4 z-10 relative">
+        <section id="projects" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 md:px-8 lg:px-12 z-10 relative">
             <div className="mb-10 sm:mb-12 md:mb-16">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase mb-4 sm:mb-6"
+                    className="text-[clamp(2.2rem,10vw,10rem)] leading-[0.8] font-display font-black uppercase mb-4 sm:mb-6 break-words w-full"
                 >
                     Selected<span className="text-neon-main">.</span>Works
                 </motion.h2>
