@@ -1,5 +1,5 @@
 "use client"
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Copy, Check, ArrowUpRight, Send } from 'lucide-react';
 import confetti from 'canvas-confetti';

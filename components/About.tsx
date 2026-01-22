@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown, Trophy } from 'lucide-react';
 import { useEffect, useState } from 'react';
 

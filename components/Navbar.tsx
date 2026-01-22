@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { X, FileText, Download, Menu as MenuIcon } from 'lucide-react';
 
 export default function Navbar() {

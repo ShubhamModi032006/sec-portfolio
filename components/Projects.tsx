@@ -1,5 +1,5 @@
 "use client"
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight, Github, ExternalLink, Youtube, X, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { useState, useRef, useEffect } from "react";
 import { ExternalLink, CheckCircle2, ChevronRight, Hash } from "lucide-react";
 import Image from "next/image";
