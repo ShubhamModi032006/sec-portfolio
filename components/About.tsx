@@ -334,10 +334,10 @@ export default function About() {
                 </Box>
 
                 {/* Bio Box */}
-                <Box className="md:order-1 lg:order-none md:col-span-2 lg:col-span-2" delay={0.1}>
-                    <div className="flex justify-between items-start mb-6 md:mb-10 flex-wrap gap-2">
+                <Box className="md:order-1 lg:order-none md:col-span-2 lg:col-span-2 md:!p-6" delay={0.1}>
+                    <div className="flex justify-between items-start mb-4 md:mb-6 flex-wrap gap-2">
                         <div>
-                            <h2 className="text-[clamp(1.5rem,2.2vw,2.5rem)] font-bold text-white break-words">About</h2>
+                            <h2 className="text-[clamp(1.2rem,2vw,2rem)] font-bold text-white break-words">About</h2>
                             <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-neon-main mt-1 opacity-80">
                                 <span className="w-1.5 h-1.5 bg-neon-main animate-pulse rounded-full" />
                                 // SYSTEM_LOG: BIO_DATA_FETCHED
@@ -347,29 +347,29 @@ export default function About() {
                             Open to Work
                         </div>
                     </div>
-                    <p className="text-lg md:text-xl lg:text-2xl text-neutral-300 leading-relaxed font-sans font-light">
+                    <p className="text-sm md:text-base lg:text-lg text-neutral-300 leading-relaxed font-sans font-light">
                         I'm a <span className="text-white font-medium">Full Stack Developer</span> passionate about building robust web applications. I transform ideas into complex <span className="text-white font-medium">MERN stack solutions</span> and treat every project as a piece of art.
                     </p>
-                    <div className="mt-6 sm:mt-8 flex gap-4">
+                    <div className="mt-4 sm:mt-6 flex gap-4">
                         <div className="flex flex-col">
-                            <span className="text-2xl sm:text-3xl font-bold font-display text-white">#3</span>
+                            <span className="text-xl sm:text-2xl font-bold font-display text-white">#3</span>
                             <span className="text-[10px] sm:text-xs uppercase text-neutral-400 tracking-wider">Major Projects</span>
                         </div>
                         <div className="w-[1px] h-8 sm:h-10 bg-white/10" />
                         <div className="flex flex-col">
-                            <span className="text-2xl sm:text-3xl font-bold font-display text-white">100%</span>
+                            <span className="text-xl sm:text-2xl font-bold font-display text-white">100%</span>
                             <span className="text-[10px] sm:text-xs uppercase text-neutral-400 tracking-wider">Commitment</span>
                         </div>
                     </div>
                 </Box>
 
                 {/* LeetCode Box */}
-                <Box className="md:order-3 lg:order-none md:col-span-1 lg:col-span-1 flex flex-col justify-between min-h-[200px]" delay={0.2}>
+                <Box className="md:order-3 lg:order-none md:col-span-1 lg:col-span-1 flex flex-col justify-between min-h-[180px] md:!p-6" delay={0.2}>
                     <LeetCodeStats />
                 </Box>
 
                 {/* Github Activity Box */}
-                <Box className="md:order-4 lg:order-none md:col-span-1 lg:col-span-1 !p-4 sm:!p-6 flex flex-col justify-center min-h-[200px]" delay={0.3}>
+                <Box className="md:order-4 lg:order-none md:col-span-1 lg:col-span-1 !p-4 sm:!p-5 md:!p-6 flex flex-col justify-center min-h-[180px]" delay={0.3}>
                     <GithubActivity />
                 </Box>
             </div>
