@@ -12,11 +12,6 @@ const Schema = () => {
                 description: 'Portfolio of Shubham Modi, a Full Stack Developer specializing in the MERN stack.',
                 publisher: {
                     '@id': 'https://shubhammodi.me/#person'
-                },
-                potentialAction: {
-                    '@type': 'SearchAction',
-                    target: 'https://shubhammodi.me/?q={search_term_string}',
-                    'query-input': 'required name=search_term_string'
                 }
             },
             {
