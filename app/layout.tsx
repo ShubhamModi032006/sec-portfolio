@@ -3,7 +3,8 @@ import { Inter, Syne, Oswald } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
-import SmoothScroll from '@/components/SmoothScroll';
+import LenisProvider from '@/components/LenisProvider';
+import MotionProvider from '@/components/MotionProvider';
 import Schema from '@/components/seo/Schema';
 import { Analytics } from "@vercel/analytics/next";
 
@@ -107,20 +108,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`} suppressHydrationWarning>
-        <Schema />
-        {/* Global Texture */}
-        <div className="grain-overlay" />
+        <LenisProvider>
+          <MotionProvider>
+            <Schema />
+            {/* Global Texture */}
+            <div className="grain-overlay" />
 
-        {/* Interactive Elements */}
-        <CustomCursor />
-        <Navbar />
-        <SmoothScroll />
+            {/* Interactive Elements */}
+            <CustomCursor />
+            <Navbar />
 
-        {/* Main Content */}
-        <main className="relative z-10 w-full">
-          {children}
-        </main>
-        <Analytics />
+            {/* Main Content */}
+            <main className="relative z-10 w-full">
+              {children}
+            </main>
+            <Analytics />
+          </MotionProvider>
+        </LenisProvider>
       </body>
     </html>
   );

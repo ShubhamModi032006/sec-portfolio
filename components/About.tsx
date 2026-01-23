@@ -29,6 +29,7 @@ const GithubActivity = () => {
     const fetchData = async () => {
         try {
             const response = await fetch('https://github-contributions-api.jogruber.de/v4/ShubhamModi032006?y=last');
+            if (!response.ok) throw new Error('Failed to fetch Github data');
             const data = await response.json();
 
             // Flatten the days from the API response
@@ -185,20 +186,36 @@ const LeetCodeStats = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchStats = fetch('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/profile').then(res => res.json());
-        const fetchContest = fetch('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/contest').then(res => res.json());
+        const fetchWithFallback = async (url: string) => {
+            try {
+                const res = await fetch(url);
+                if (!res.ok) {
+                    if (res.status === 429) console.warn(`Rate limit hit for ${url}`);
+                    return null;
+                }
+                return await res.json();
+            } catch (e) {
+                console.error(`Failed to fetch ${url}`, e);
+                return null;
+            }
+        };
 
-        Promise.all([fetchStats, fetchContest])
-            .then(([statsData, contestData]) => {
-                if (statsData && statsData.totalSolved !== undefined) {
-                    setStats(statsData);
-                }
-                if (contestData) {
-                    setContest(contestData);
-                }
-            })
-            .catch(err => console.error("LeetCode fetch error", err))
-            .finally(() => setLoading(false));
+        const fetchData = async () => {
+            const [statsData, contestData] = await Promise.all([
+                fetchWithFallback('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/profile'),
+                fetchWithFallback('https://alfa-leetcode-api.onrender.com/ShubhamModi032006/contest')
+            ]);
+
+            if (statsData && statsData.totalSolved !== undefined) {
+                setStats(statsData);
+            }
+            if (contestData) {
+                setContest(contestData);
+            }
+            setLoading(false);
+        };
+
+        fetchData();
     }, []);
 
     if (loading) {

@@ -1,5 +1,5 @@
 "use client"
-import { motion, useScroll, useTransform } from 'motion/react';
+import { m, useScroll, useTransform, useSpring } from 'motion/react';
 import { useRef } from 'react';
 
 export default function Hero() {
@@ -9,14 +9,15 @@ export default function Hero() {
         offset: ['start start', 'end start']
     })
 
-    const y = useTransform(scrollYProgress, [0, 1], ["0vh", "50vh"])
+    const yRaw = useTransform(scrollYProgress, [0, 1], ["0vh", "20vh"])
+    const y = useSpring(yRaw, { stiffness: 100, damping: 30 });
 
     return (
         <section ref={container} className="min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden px-4 md:px-8 lg:px-12 py-20">
-            <motion.div style={{ y }} className="flex flex-col items-center justify-center z-10 relative">
+            <m.div style={{ y, willChange: 'transform' }} className="flex flex-col items-center justify-center z-10 relative">
                 <h1 className="sr-only">Shubham Modi - Full Stack Developer Portfolio</h1>
                 <div className="overflow-hidden">
-                    <motion.div
+                    <m.div
                         initial={{ y: "100%" }}
                         animate={{ y: 0 }}
                         transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
@@ -24,10 +25,10 @@ export default function Hero() {
                         aria-hidden="true"
                     >
                         Full Stack
-                    </motion.div>
+                    </m.div>
                 </div>
                 <div className="overflow-hidden">
-                    <motion.div
+                    <m.div
                         initial={{ y: "100%" }}
                         animate={{ y: 0 }}
                         transition={{ duration: 1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
@@ -35,18 +36,18 @@ export default function Hero() {
                         aria-hidden="true"
                     >
                         Developer
-                    </motion.div>
+                    </m.div>
                 </div>
 
-                <motion.p
+                <m.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 1 }}
                     className="mt-8 text-neutral-400 font-sans tracking-widest text-sm uppercase"
                 >
                     Creative Engineering
-                </motion.p>
-            </motion.div>
+                </m.p>
+            </m.div>
 
             {/* Scroll Indicator */}
             <div

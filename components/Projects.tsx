@@ -1,5 +1,5 @@
 "use client"
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
+import { m, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight, Github, ExternalLink, Youtube, X, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
@@ -134,7 +134,7 @@ const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: 
     }
 
     return (
-        <motion.button
+        <m.button
             onClick={onClick}
             aria-label={label}
             className="group/btn relative flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-black rounded-full overflow-hidden transition-all duration-300 w-10 h-10 hover:w-auto hover:px-4 backdrop-blur-md"
@@ -145,7 +145,7 @@ const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: 
                     {label}
                 </span>
             </div>
-        </motion.button>
+        </m.button>
     );
 };
 
@@ -196,7 +196,7 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
     const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-5deg", "5deg"]);
 
     return (
-        <motion.div
+        <m.div
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -204,7 +204,8 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
             style={{
                 rotateX,
                 rotateY,
-                transformStyle: "preserve-3d"
+                transformStyle: "preserve-3d",
+                willChange: "transform"
             }}
             className="relative w-full h-[400px] sm:h-[450px] md:h-[500px] bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-none"
         >
@@ -227,7 +228,7 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
                 {/* Demo Video Preview Layer */}
                 <AnimatePresence>
                     {project.demoVideo && isHovered && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -243,7 +244,7 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
                                 playsInline
                                 className="w-full h-full object-cover grayscale-[0.2]"
                             />
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
@@ -285,7 +286,7 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </m.div>
     )
 }
 
@@ -295,14 +296,14 @@ export default function Projects() {
     return (
         <section id="projects" className="py-16 sm:py-24 md:py-32 container mx-auto px-4 md:px-8 lg:px-12 z-10 relative">
             <div className="mb-10 sm:mb-12 md:mb-16">
-                <motion.h2
+                <m.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="text-[clamp(2.5rem,5.1vw,10rem)] leading-[0.8] font-display font-black uppercase mb-4 sm:mb-6 break-words w-full"
                 >
                     Selected<span className="text-neon-main">.</span>Works
-                </motion.h2>
+                </m.h2>
                 <div className="h-1 w-16 sm:w-20 bg-neon-main mb-4 sm:mb-6" />
                 <div className="flex items-center gap-2 font-mono text-xs sm:text-sm text-neon-main mb-4 opacity-80">
                     <span className="w-2 h-2 bg-neon-main animate-pulse" />
@@ -321,7 +322,7 @@ export default function Projects() {
 
             <AnimatePresence>
                 {selectedVideo && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -331,7 +332,7 @@ export default function Projects() {
                         <button aria-label="Close Video" className="absolute top-10 right-10 text-white/50 hover:text-white transition-colors">
                             <X className="w-10 h-10" />
                         </button>
-                        <motion.div
+                        <m.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
@@ -344,8 +345,8 @@ export default function Projects() {
                                 controls
                                 autoPlay
                             />
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </section>

@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Copy, Check, ArrowUpRight, Send } from 'lucide-react';
-import confetti from 'canvas-confetti';
+
 
 export default function Contact() {
     const [copied, setCopied] = useState(false);
@@ -24,9 +24,10 @@ export default function Contact() {
         return () => clearInterval(interval);
     }, []);
 
-    const handleCopy = () => {
+    const handleCopy = async () => {
         navigator.clipboard.writeText(email);
         setCopied(true);
+        const confetti = (await import('canvas-confetti')).default;
         confetti({
             particleCount: 100,
             spread: 70,
