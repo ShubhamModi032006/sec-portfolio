@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
 import SmoothScroll from '@/components/SmoothScroll';
 import Schema from '@/components/seo/Schema';
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' });
@@ -119,6 +120,7 @@ export default function RootLayout({
         <main className="relative z-10 w-full">
           {children}
         </main>
+        <Analytics />
       </body>
     </html>
   );
