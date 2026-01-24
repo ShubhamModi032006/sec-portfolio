@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
+import { throttle } from '@/lib/utils';
 
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
@@ -26,7 +27,7 @@ export default function CustomCursor() {
     };
 
     const isMobileDevice = checkDevice();
-    const resizeHandler = () => checkDevice();
+    const resizeHandler = throttle(() => checkDevice(), 200);
     window.addEventListener('resize', resizeHandler);
 
     const updateMouse = (e: MouseEvent) => {

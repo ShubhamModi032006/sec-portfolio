@@ -1,10 +1,11 @@
 "use client"
 import Image from 'next/image';
 import { motion } from 'motion/react';
+import { memo } from 'react';
 
 const marqueeItems = ["REACT", "NEXT.JS", "MONGODB", "C++", "SYSTEM DESIGN", "REACT", "NEXT.JS", "MONGODB", "C++", "SYSTEM DESIGN"];
 
-const SkillCard = ({ title, skills, className = "" }: { title: string, skills: string[], className?: string }) => (
+const SkillCard = memo(({ title, skills, className = "" }: { title: string, skills: string[], className?: string }) => (
   <motion.div
     whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(204, 255, 0, 0.1)" }}
     className={`bg-[#1a1a1a] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 hover:border-neon-main/30 transition-colors ${className}`}
@@ -19,9 +20,9 @@ const SkillCard = ({ title, skills, className = "" }: { title: string, skills: s
       ))}
     </div>
   </motion.div>
-)
+));
 
-const MernCard = ({ title, sub, icon }: { title: string, sub: string, icon: string }) => (
+const MernCard = memo(({ title, sub, icon }: { title: string, sub: string, icon: string }) => (
   <motion.div
     whileHover={{ y: -5, borderColor: "rgba(204, 255, 0, 0.5)" }}
     className="bg-[#1a1a1a] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 flex flex-col justify-between aspect-square group relative overflow-hidden"
@@ -43,7 +44,7 @@ const MernCard = ({ title, sub, icon }: { title: string, sub: string, icon: stri
       <p className="text-[10px] sm:text-xs font-mono text-neutral-500 uppercase tracking-widest">{sub}</p>
     </div>
   </motion.div>
-)
+));
 
 export default function Skills() {
   return (

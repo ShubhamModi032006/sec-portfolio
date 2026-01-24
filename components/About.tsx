@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import { motion } from 'motion/react';
 import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown, Trophy } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 
-const Box = ({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
+const Box = memo(({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,9 +15,9 @@ const Box = ({ children, className = "", delay = 0 }: { children: React.ReactNod
     >
         {children}
     </motion.div>
-)
+));
 
-const GithubActivity = () => {
+const GithubActivity = memo(() => {
     const weeks = 18;
     const daysPerWeek = 7;
     const totalDays = weeks * daysPerWeek;
@@ -178,9 +178,9 @@ const GithubActivity = () => {
             </div>
         </div>
     )
-}
+});
 
-const LeetCodeStats = () => {
+const LeetCodeStats = memo(() => {
     const [stats, setStats] = useState<any>(null);
     const [contest, setContest] = useState<any>(null);
     const [loading, setLoading] = useState(true);
@@ -314,7 +314,7 @@ const LeetCodeStats = () => {
             </div>
         </div>
     );
-}
+});
 
 export default function About() {
 

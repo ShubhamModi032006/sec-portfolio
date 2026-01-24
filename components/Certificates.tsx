@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import { ExternalLink, CheckCircle2, ChevronRight, Hash } from "lucide-react";
 import Image from "next/image";
 
@@ -134,6 +134,44 @@ const certificates: Certificate[] = [
     }
 ];
 
+const CertificateItem = memo(({ cert, isActive, onHover }: { cert: Certificate, isActive: boolean, onHover: (c: Certificate) => void }) => (
+    <div
+        onMouseEnter={() => onHover(cert)}
+        className={`
+            relative h-[100px] p-4 lg:p-6 cursor-pointer border-b border-white/5 transition-all duration-300 group flex items-center
+            ${isActive ? "bg-neon-main/5" : "hover:bg-white/5"}
+        `}
+    >
+        {/* Active Indicator Bar */}
+        {isActive && (
+            <motion.div
+                layoutId="active-bar"
+                className="absolute left-0 top-0 bottom-0 w-1 bg-neon-main"
+            />
+        )}
+
+        <div className="flex justify-between items-center w-full relative z-10">
+            <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-3 text-xs font-mono mb-1">
+                    <span className={`${isActive ? "text-neon-main" : "text-neutral-500 group-hover:text-neutral-400"}`}>
+                        {cert.date}
+                    </span>
+                    <span className="text-neutral-700">|</span>
+                    <span className="text-neutral-500 uppercase tracking-wider">{cert.issuer}</span>
+                </div>
+                <h3 className={`text-lg font-bold font-display uppercase transition-colors ${isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"}`}>
+                    {cert.title}
+                </h3>
+            </div>
+
+            {/* Arrow Icon */}
+            <ChevronRight
+                className={`w-5 h-5 transition-all duration-300 ${isActive ? "text-neon-main translate-x-0 opacity-100" : "text-neutral-600 -translate-x-4 opacity-0"}`}
+            />
+        </div>
+    </div>
+));
+
 export default function Certificates() {
     const [hoveredCert, setHoveredCert] = useState<Certificate>(certificates[0]);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -177,47 +215,14 @@ export default function Certificates() {
                             <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black to-transparent z-20 pointer-events-none" />
 
                             <motion.div style={{ y }} className="flex flex-col">
-                                {certificates.map((cert) => {
-                                    const isActive = hoveredCert.id === cert.id;
-                                    return (
-                                        <div
-                                            key={cert.id}
-                                            onMouseEnter={() => setHoveredCert(cert)}
-                                            className={`
-                                                relative h-[100px] p-4 lg:p-6 cursor-pointer border-b border-white/5 transition-all duration-300 group flex items-center
-                                                ${isActive ? "bg-neon-main/5" : "hover:bg-white/5"}
-                                            `}
-                                        >
-                                            {/* Active Indicator Bar */}
-                                            {isActive && (
-                                                <motion.div
-                                                    layoutId="active-bar"
-                                                    className="absolute left-0 top-0 bottom-0 w-1 bg-neon-main"
-                                                />
-                                            )}
-
-                                            <div className="flex justify-between items-center w-full relative z-10">
-                                                <div className="flex flex-col gap-1">
-                                                    <div className="flex items-center gap-3 text-xs font-mono mb-1">
-                                                        <span className={`${isActive ? "text-neon-main" : "text-neutral-500 group-hover:text-neutral-400"}`}>
-                                                            {cert.date}
-                                                        </span>
-                                                        <span className="text-neutral-700">|</span>
-                                                        <span className="text-neutral-500 uppercase tracking-wider">{cert.issuer}</span>
-                                                    </div>
-                                                    <h3 className={`text-lg font-bold font-display uppercase transition-colors ${isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"}`}>
-                                                        {cert.title}
-                                                    </h3>
-                                                </div>
-
-                                                {/* Arrow Icon */}
-                                                <ChevronRight
-                                                    className={`w-5 h-5 transition-all duration-300 ${isActive ? "text-neon-main translate-x-0 opacity-100" : "text-neutral-600 -translate-x-4 opacity-0"}`}
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                                {certificates.map((cert) => (
+                                    <CertificateItem
+                                        key={cert.id}
+                                        cert={cert}
+                                        isActive={hoveredCert.id === cert.id}
+                                        onHover={setHoveredCert}
+                                    />
+                                ))}
                             </motion.div>
                         </div>
 

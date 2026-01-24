@@ -1,6 +1,6 @@
 "use client"
 import { m, useMotionValue, useSpring, useTransform, AnimatePresence } from "motion/react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, memo } from "react";
 import { ArrowUpRight, Github, ExternalLink, Youtube, X, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -149,7 +149,7 @@ const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: 
     );
 };
 
-const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], onVideoClick: (url: string) => void }) => {
+const ProjectCard = memo(({ project, onVideoClick }: { project: typeof projects[0], onVideoClick: (url: string) => void }) => {
     const ref = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isHovered, setIsHovered] = useState(false);
@@ -288,7 +288,7 @@ const ProjectCard = ({ project, onVideoClick }: { project: typeof projects[0], o
             </div>
         </m.div>
     )
-}
+})
 
 export default function Projects() {
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
