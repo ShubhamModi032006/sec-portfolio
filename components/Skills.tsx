@@ -55,6 +55,7 @@ export default function Skills() {
           className="flex gap-6 sm:gap-8 md:gap-12 pr-6 sm:pr-8 md:pr-12 whitespace-nowrap"
           animate={{ x: "-50%" }}
           transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+          style={{ willChange: "transform" }}
         >
           {marqueeItems.map((item, i) => (
             <div key={i} className="flex items-center gap-6 sm:gap-8 md:gap-12 select-none">

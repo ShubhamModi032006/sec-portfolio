@@ -317,16 +317,7 @@ const LeetCodeStats = () => {
 }
 
 export default function About() {
-    const [time, setTime] = useState("");
 
-    useEffect(() => {
-        const updateTime = () => {
-            setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short', timeZone: 'Asia/Kolkata' }));
-        }
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
-    }, []);
 
     return (
         <section id="about" className="min-h-screen py-16 sm:py-24 md:py-32 container mx-auto px-4 md:px-8 lg:px-12 flex flex-col justify-center relative">
