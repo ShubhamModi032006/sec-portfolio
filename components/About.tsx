@@ -4,20 +4,22 @@ import { motion } from 'motion/react';
 import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown, Trophy } from 'lucide-react';
 import { useEffect, useState, memo } from 'react';
 
-const Box = memo(({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
-        whileHover={{ scale: 0.98, rotate: 0.5 }}
-        className={`bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-sm overflow-hidden relative group hover:border-neon-main/50 transition-colors ${className}`}
-    >
-        {children}
-    </motion.div>
-));
+const Box = memo(function Box({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay }}
+            whileHover={{ scale: 0.98, rotate: 0.5 }}
+            className={`bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-sm overflow-hidden relative group hover:border-neon-main/50 transition-colors ${className}`}
+        >
+            {children}
+        </motion.div>
+    );
+});
 
-const GithubActivity = memo(() => {
+const GithubActivity = memo(function GithubActivity() {
     const weeks = 18;
     const daysPerWeek = 7;
     const totalDays = weeks * daysPerWeek;
@@ -180,7 +182,7 @@ const GithubActivity = memo(() => {
     )
 });
 
-const LeetCodeStats = memo(() => {
+const LeetCodeStats = memo(function LeetCodeStats() {
     const [stats, setStats] = useState<any>(null);
     const [contest, setContest] = useState<any>(null);
     const [loading, setLoading] = useState(true);

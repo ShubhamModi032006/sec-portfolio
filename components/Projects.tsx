@@ -149,7 +149,7 @@ const ActionButton = ({ icon: Icon, label, href, onClick }: { icon: any, label: 
     );
 };
 
-const ProjectCard = memo(({ project, onVideoClick }: { project: typeof projects[0], onVideoClick: (url: string) => void }) => {
+const ProjectCard = memo(function ProjectCard({ project, onVideoClick }: { project: typeof projects[0], onVideoClick: (url: string) => void }) {
     const ref = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isHovered, setIsHovered] = useState(false);

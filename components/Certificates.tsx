@@ -134,43 +134,45 @@ const certificates: Certificate[] = [
     }
 ];
 
-const CertificateItem = memo(({ cert, isActive, onHover }: { cert: Certificate, isActive: boolean, onHover: (c: Certificate) => void }) => (
-    <div
-        onMouseEnter={() => onHover(cert)}
-        className={`
+const CertificateItem = memo(function CertificateItem({ cert, isActive, onHover }: { cert: Certificate, isActive: boolean, onHover: (c: Certificate) => void }) {
+    return (
+        <div
+            onMouseEnter={() => onHover(cert)}
+            className={`
             relative h-[100px] p-4 lg:p-6 cursor-pointer border-b border-white/5 transition-all duration-300 group flex items-center
             ${isActive ? "bg-neon-main/5" : "hover:bg-white/5"}
         `}
-    >
-        {/* Active Indicator Bar */}
-        {isActive && (
-            <motion.div
-                layoutId="active-bar"
-                className="absolute left-0 top-0 bottom-0 w-1 bg-neon-main"
-            />
-        )}
+        >
+            {/* Active Indicator Bar */}
+            {isActive && (
+                <motion.div
+                    layoutId="active-bar"
+                    className="absolute left-0 top-0 bottom-0 w-1 bg-neon-main"
+                />
+            )}
 
-        <div className="flex justify-between items-center w-full relative z-10">
-            <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-3 text-xs font-mono mb-1">
-                    <span className={`${isActive ? "text-neon-main" : "text-neutral-500 group-hover:text-neutral-400"}`}>
-                        {cert.date}
-                    </span>
-                    <span className="text-neutral-700">|</span>
-                    <span className="text-neutral-500 uppercase tracking-wider">{cert.issuer}</span>
+            <div className="flex justify-between items-center w-full relative z-10">
+                <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-3 text-xs font-mono mb-1">
+                        <span className={`${isActive ? "text-neon-main" : "text-neutral-500 group-hover:text-neutral-400"}`}>
+                            {cert.date}
+                        </span>
+                        <span className="text-neutral-700">|</span>
+                        <span className="text-neutral-500 uppercase tracking-wider">{cert.issuer}</span>
+                    </div>
+                    <h3 className={`text-lg font-bold font-display uppercase transition-colors ${isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"}`}>
+                        {cert.title}
+                    </h3>
                 </div>
-                <h3 className={`text-lg font-bold font-display uppercase transition-colors ${isActive ? "text-white" : "text-neutral-400 group-hover:text-neutral-200"}`}>
-                    {cert.title}
-                </h3>
-            </div>
 
-            {/* Arrow Icon */}
-            <ChevronRight
-                className={`w-5 h-5 transition-all duration-300 ${isActive ? "text-neon-main translate-x-0 opacity-100" : "text-neutral-600 -translate-x-4 opacity-0"}`}
-            />
+                {/* Arrow Icon */}
+                <ChevronRight
+                    className={`w-5 h-5 transition-all duration-300 ${isActive ? "text-neon-main translate-x-0 opacity-100" : "text-neutral-600 -translate-x-4 opacity-0"}`}
+                />
+            </div>
         </div>
-    </div>
-));
+    );
+});
 
 export default function Certificates() {
     const [hoveredCert, setHoveredCert] = useState<Certificate>(certificates[0]);

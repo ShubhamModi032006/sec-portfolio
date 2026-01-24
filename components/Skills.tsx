@@ -5,46 +5,50 @@ import { memo } from 'react';
 
 const marqueeItems = ["REACT", "NEXT.JS", "MONGODB", "C++", "SYSTEM DESIGN", "REACT", "NEXT.JS", "MONGODB", "C++", "SYSTEM DESIGN"];
 
-const SkillCard = memo(({ title, skills, className = "" }: { title: string, skills: string[], className?: string }) => (
-  <motion.div
-    whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(204, 255, 0, 0.1)" }}
-    className={`bg-[#1a1a1a] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 hover:border-neon-main/30 transition-colors ${className}`}
-  >
-    <div className="w-10 sm:w-12 h-1 bg-neon-main/50 rounded-full" />
-    <h3 className="text-xl sm:text-2xl font-display font-bold text-white uppercase tracking-wider">{title}</h3>
-    <div className="flex flex-wrap gap-2">
-      {skills.map((skill, i) => (
-        <span key={i} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/5 rounded-lg text-xs sm:text-sm font-medium text-neutral-400 border border-white/5 hover:text-white hover:bg-white/10 transition-colors cursor-default">
-          {skill}
-        </span>
-      ))}
-    </div>
-  </motion.div>
-));
+const SkillCard = memo(function SkillCard({ title, skills, className = "" }: { title: string, skills: string[], className?: string }) {
+  return (
+    <motion.div
+      whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(204, 255, 0, 0.1)" }}
+      className={`bg-[#1a1a1a] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6 hover:border-neon-main/30 transition-colors ${className}`}
+    >
+      <div className="w-10 sm:w-12 h-1 bg-neon-main/50 rounded-full" />
+      <h3 className="text-xl sm:text-2xl font-display font-bold text-white uppercase tracking-wider">{title}</h3>
+      <div className="flex flex-wrap gap-2">
+        {skills.map((skill, i) => (
+          <span key={i} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/5 rounded-lg text-xs sm:text-sm font-medium text-neutral-400 border border-white/5 hover:text-white hover:bg-white/10 transition-colors cursor-default">
+            {skill}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+});
 
-const MernCard = memo(({ title, sub, icon }: { title: string, sub: string, icon: string }) => (
-  <motion.div
-    whileHover={{ y: -5, borderColor: "rgba(204, 255, 0, 0.5)" }}
-    className="bg-[#1a1a1a] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 flex flex-col justify-between aspect-square group relative overflow-hidden"
-  >
-    <div className="absolute top-0 right-0 p-20 sm:p-32 bg-neon-main/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-neon-main/10 transition-colors" />
+const MernCard = memo(function MernCard({ title, sub, icon }: { title: string, sub: string, icon: string }) {
+  return (
+    <motion.div
+      whileHover={{ y: -5, borderColor: "rgba(204, 255, 0, 0.5)" }}
+      className="bg-[#1a1a1a] border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 flex flex-col justify-between aspect-square group relative overflow-hidden"
+    >
+      <div className="absolute top-0 right-0 p-20 sm:p-32 bg-neon-main/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-neon-main/10 transition-colors" />
 
-    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-neon-main group-hover:text-black group-hover:border-neon-main transition-all duration-300 relative z-10">
-      <Image
-        src={`https://cdn.simpleicons.org/${icon}/white`}
-        width={28}
-        height={28}
-        className="w-6 h-6 sm:w-7 sm:h-7 opacity-70 group-hover:brightness-0 group-hover:opacity-100 transition-all"
-        alt={title}
-        unoptimized
-      />
-    </div>
-    <div className="relative z-10">
-      <h4 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-1 sm:mb-2 group-hover:text-neon-main transition-colors">{title}</h4>
-      <p className="text-[10px] sm:text-xs font-mono text-neutral-500 uppercase tracking-widest">{sub}</p>
-    </div>
-  </motion.div>
-));
+      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-neon-main group-hover:text-black group-hover:border-neon-main transition-all duration-300 relative z-10">
+        <Image
+          src={`https://cdn.simpleicons.org/${icon}/white`}
+          width={28}
+          height={28}
+          className="w-6 h-6 sm:w-7 sm:h-7 opacity-70 group-hover:brightness-0 group-hover:opacity-100 transition-all"
+          alt={title}
+          unoptimized
+        />
+      </div>
+      <div className="relative z-10">
+        <h4 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-1 sm:mb-2 group-hover:text-neon-main transition-colors">{title}</h4>
+        <p className="text-[10px] sm:text-xs font-mono text-neutral-500 uppercase tracking-widest">{sub}</p>
+      </div>
+    </motion.div>
+  );
+});
 
 export default function Skills() {
   return (
