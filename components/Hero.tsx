@@ -9,12 +9,11 @@ export default function Hero() {
         offset: ['start start', 'end start']
     })
 
-    const yRaw = useTransform(scrollYProgress, [0, 1], ["0vh", "20vh"])
-    const y = useSpring(yRaw, { stiffness: 100, damping: 30 });
+    const y = useTransform(scrollYProgress, [0, 1], ["0vh", "20vh"])
 
     return (
         <section ref={container} className="min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden px-4 md:px-8 lg:px-12 py-20">
-            <m.div style={{ y, willChange: 'transform' }} className="flex flex-col items-center justify-center z-10 relative">
+            <m.div style={{ y }} className="flex flex-col items-center justify-center z-10 relative">
                 <h1 className="sr-only">Shubham Modi - Full Stack Developer Portfolio</h1>
                 <div className="overflow-hidden">
                     <m.div
