@@ -6,7 +6,9 @@ import CustomCursor from '@/components/CustomCursor';
 import LenisProvider from '@/components/LenisProvider';
 import MotionProvider from '@/components/MotionProvider';
 import Schema from '@/components/seo/Schema';
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' });
@@ -122,7 +124,9 @@ export default function RootLayout({
             <main className="relative z-10 w-full">
               {children}
             </main>
+
             <Analytics />
+            <SpeedInsights />
           </MotionProvider>
         </LenisProvider>
       </body>
