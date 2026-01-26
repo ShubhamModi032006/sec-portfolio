@@ -7,7 +7,8 @@ import LenisProvider from '@/components/LenisProvider';
 import MotionProvider from '@/components/MotionProvider';
 import Schema from '@/components/seo/Schema';
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -126,7 +127,8 @@ export default function RootLayout({
             </main>
 
             <Analytics />
-            <SpeedInsights />
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
+
           </MotionProvider>
         </LenisProvider>
       </body>
