@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Syne, Oswald } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
-import CustomCursor from '@/components/CustomCursor';
+import { DotCursor } from '@/app/_components/DotCursor';
 import LenisProvider from '@/components/LenisProvider';
 import MotionProvider from '@/components/MotionProvider';
 import Schema from '@/components/seo/Schema';
@@ -117,7 +117,7 @@ export default function RootLayout({
             <div className="grain-overlay" />
 
             {/* Interactive Elements */}
-            <CustomCursor />
+            <DotCursor />
             <Navbar />
 
             {/* Main Content */}
