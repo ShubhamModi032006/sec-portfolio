@@ -3,15 +3,28 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, FileText, Download, Menu as MenuIcon } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 
 export default function Navbar() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const lenis = useLenis();
 
   const resumeUrl = "https://drive.google.com/file/d/1Y3xLQZPY8RYeQ_CNiWjOWVmiCN2_i7Mu/preview";
   const downloadUrl = "https://drive.google.com/u/0/uc?id=1Y3xLQZPY8RYeQ_CNiWjOWVmiCN2_i7Mu&export=download";
 
   const toggleMobileNav = () => setIsMobileNavOpen(!isMobileNavOpen);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (lenis) {
+      lenis.scrollTo(href, {
+        duration: 2.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Exponential ease-out
+      });
+    }
+    if (isMobileNavOpen) setIsMobileNavOpen(false);
+  };
 
   return (
     <>
@@ -26,6 +39,7 @@ export default function Navbar() {
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
+              onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
               className="px-6 py-2 rounded-full text-xs font-medium uppercase tracking-widest text-neutral-200 hover:text-white hover:bg-white/10 transition-all font-sans"
             >
               {item}
@@ -70,7 +84,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={`#${item.toLowerCase()}`}
-                    onClick={() => setIsMobileNavOpen(false)}
+                    onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
                     className="text-3xl sm:text-4xl font-display font-bold uppercase tracking-tighter hover:text-neon-main transition-colors"
                   >
                     {item}
