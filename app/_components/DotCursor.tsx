@@ -91,7 +91,8 @@ export function DotCursor() {
                 height: h,
                 willChange: "transform, width, height",
             }}
-            className="pointer-events-none fixed top-0 left-0 isolate z-[60] flex w-fit -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full bg-neon-main backdrop-blur-[1px]"
+            className="pointer-events-none fixed top-0 left-0 isolate z-[60] hidden md:flex w-fit -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full bg-neon-main backdrop-blur-[1px]"
+
         >
             {/* text stays crisp (not blended, not scaled) */}
             <motion.span
