@@ -110,6 +110,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://github-contributions-api.jogruber.de" />
+      </head>
       <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`} suppressHydrationWarning>
         <LenisProvider>
           <MotionProvider>
