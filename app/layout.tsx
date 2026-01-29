@@ -113,6 +113,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://github-contributions-api.jogruber.de" />
+        <link rel="preconnect" href="https://alfa-leetcode-api.onrender.com" />
+        <link rel="preconnect" href="https://cdn.simpleicons.org" />
       </head>
       <body className={`${inter.variable} ${syne.variable} ${oswald.variable} bg-background text-foreground antialiased overflow-x-hidden`} suppressHydrationWarning>
         <LenisProvider>

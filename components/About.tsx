@@ -1,12 +1,12 @@
 "use client"
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import { MapPin, ArrowUpRight, Music, Lightbulb, ChevronDown, Trophy } from 'lucide-react';
 import { useEffect, useState, memo } from 'react';
 
 const Box = memo(function Box({ children, className = "", delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) {
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -15,7 +15,7 @@ const Box = memo(function Box({ children, className = "", delay = 0 }: { childre
             className={`bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 backdrop-blur-sm overflow-hidden relative group hover:border-neon-main/50 transition-colors ${className}`}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 });
 
@@ -146,7 +146,7 @@ const GithubActivity = memo(function GithubActivity() {
                                 if (!data) return null;
 
                                 return (
-                                    <motion.div
+                                    <m.div
                                         key={dayIndex}
                                         initial={{ opacity: 0, scale: 0 }}
                                         animate={{ opacity: 1, scale: 1 }}
@@ -161,7 +161,7 @@ const GithubActivity = memo(function GithubActivity() {
                                                 <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-black/90" />
                                             </div>
                                         )}
-                                    </motion.div>
+                                    </m.div>
                                 )
                             })}
                         </div>
@@ -303,9 +303,9 @@ const LeetCodeStats = memo(function LeetCodeStats() {
                     <span className="text-sm text-neutral-400 font-medium">Solved</span>
                 </div>
                 <div className="flex gap-1 h-1.5 w-full bg-neutral-800 rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${easyP}%` }} transition={{ duration: 1 }} className="h-full bg-green-500" />
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${mediumP}%` }} transition={{ duration: 1, delay: 0.2 }} className="h-full bg-yellow-500" />
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${hardP}%` }} transition={{ duration: 1, delay: 0.4 }} className="h-full bg-red-500" />
+                    <m.div initial={{ width: 0 }} animate={{ width: `${easyP}%` }} transition={{ duration: 1 }} className="h-full bg-green-500" />
+                    <m.div initial={{ width: 0 }} animate={{ width: `${mediumP}%` }} transition={{ duration: 1, delay: 0.2 }} className="h-full bg-yellow-500" />
+                    <m.div initial={{ width: 0 }} animate={{ width: `${hardP}%` }} transition={{ duration: 1, delay: 0.4 }} className="h-full bg-red-500" />
                 </div>
                 <div className="flex justify-between text-[10px] font-mono text-neutral-400 pt-1">
                     <span className="hover:text-green-400 transition-colors">Easy: {easy}</span>

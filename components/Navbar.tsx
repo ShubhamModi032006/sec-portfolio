@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence } from 'motion/react';
 import { X, FileText, Download, Menu as MenuIcon } from 'lucide-react';
 import { useLenis } from 'lenis/react';
 
@@ -68,7 +68,7 @@ export default function Navbar() {
       {/* Mobile Nav Overlay */}
       <AnimatePresence>
         {isMobileNavOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -76,7 +76,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-6 text-center">
               {['About', 'Skills', 'Projects', 'Certifications', 'Contact'].map((item, i) => (
-                <motion.div
+                <m.div
                   key={item}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -89,10 +89,10 @@ export default function Navbar() {
                   >
                     {item}
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
@@ -105,23 +105,23 @@ export default function Navbar() {
                   <FileText className="w-3 h-3 sm:w-4 sm:h-4" />
                   View Resume
                 </button>
-              </motion.div>
+              </m.div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {/* Resume Modal */}
       <AnimatePresence>
         {isResumeOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6 md:p-10"
             onClick={() => setIsResumeOpen(false)}
           >
-            <motion.div
+            <m.div
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
@@ -162,8 +162,8 @@ export default function Navbar() {
                   allow="autoplay"
                 />
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

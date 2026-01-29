@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { m, useMotionValue, useSpring } from 'motion/react';
 
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,8 +28,12 @@ export default function CustomCursor() {
     // Initial check
     checkDevice();
 
+    let resizeTimeout: NodeJS.Timeout;
     const resizeHandler = () => {
-      checkDevice();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        checkDevice();
+      }, 100);
     };
 
     window.addEventListener('resize', resizeHandler);
@@ -84,7 +88,7 @@ export default function CustomCursor() {
   }
 
   return (
-    <motion.div
+    <m.div
       className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference bg-neon-main rounded-full flex items-center justify-center will-change-transform"
       style={{
         x: cursorX,
@@ -105,6 +109,6 @@ export default function CustomCursor() {
     >
       {/* Center Dot (always keeps focus) */}
       <div className={`rounded-full absolute bg-neon-main transition-all duration-300 ${isHovered ? 'w-2 h-2' : 'w-1.5 h-1.5'}`} />
-    </motion.div>
+    </m.div>
   );
 }

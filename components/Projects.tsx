@@ -207,7 +207,7 @@ const ProjectCard = memo(function ProjectCard({ project, onVideoClick }: { proje
                 transformStyle: "preserve-3d",
                 willChange: "transform"
             }}
-            className="relative w-full h-[400px] sm:h-[450px] md:h-[500px] bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-none"
+            className="relative w-full h-[400px] sm:h-[450px] md:h-[500px] bg-neutral-900 border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden group cursor-none hardware-accelerated"
         >
             <div
                 style={{ transform: "translateZ(0px)" }}
@@ -221,7 +221,6 @@ const ProjectCard = memo(function ProjectCard({ project, onVideoClick }: { proje
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
-                        unoptimized
                     />
                 </div>
 
