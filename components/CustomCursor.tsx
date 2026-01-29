@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
-import { throttle } from '@/lib/utils';
 
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
@@ -11,8 +10,9 @@ export default function CustomCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // Smooth spring physics
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.2 };
+  // Smooth spring physics - Tuned for "instant" feel but smooth rendering
+  // Stiffness increased significantly to reduce lag
+  const springConfig = { damping: 20, stiffness: 500, mass: 0.1 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
@@ -23,11 +23,15 @@ export default function CustomCursor() {
       const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
       const mobile = hasTouch || isSmallScreen || isTouchDevice;
       setIsMobile(mobile);
-      return mobile;
     };
 
-    const isMobileDevice = checkDevice();
-    const resizeHandler = throttle(() => checkDevice(), 200);
+    // Initial check
+    checkDevice();
+
+    const resizeHandler = () => {
+      checkDevice();
+    };
+
     window.addEventListener('resize', resizeHandler);
 
     const updateMouse = (e: MouseEvent) => {
@@ -61,10 +65,10 @@ export default function CustomCursor() {
       setIsHovered(false);
     };
 
-    if (!isMobileDevice) {
-      window.addEventListener('mousemove', updateMouse);
-      window.addEventListener('mouseover', handleMouseOver);
-      window.addEventListener('mouseout', handleMouseOut);
+    if (!isMobile) {
+      window.addEventListener('mousemove', updateMouse, { passive: true });
+      window.addEventListener('mouseover', handleMouseOver, { passive: true });
+      window.addEventListener('mouseout', handleMouseOut, { passive: true });
     }
 
     return () => {
@@ -73,7 +77,7 @@ export default function CustomCursor() {
       window.removeEventListener('mouseout', handleMouseOut);
       window.removeEventListener('resize', resizeHandler);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isMobile]);
 
   if (isMobile) {
     return null;
@@ -81,7 +85,7 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference bg-neon-main rounded-full flex items-center justify-center"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference bg-neon-main rounded-full flex items-center justify-center will-change-transform"
       style={{
         x: cursorX,
         y: cursorY,
@@ -89,19 +93,18 @@ export default function CustomCursor() {
         translateY: "-50%",
       }}
       animate={{
-        width: isHovered ? 64 : 12,
-        height: isHovered ? 64 : 12,
-        opacity: isHovered ? 0.3 : 1, // Semi-transparent when big, solid when small
+        width: isHovered ? 40 : 12, // Reduced size slightly for better precision feel
+        height: isHovered ? 40 : 12,
+        opacity: isHovered ? 0.8 : 1,
       }}
       transition={{
-        type: "spring",
-        damping: 25,
-        stiffness: 400,
-        mass: 0.2
+        type: "tween",
+        ease: "backOut",
+        duration: 0.2
       }}
     >
       {/* Center Dot (always keeps focus) */}
-      <div className="w-1.5 h-1.5 bg-neon-main rounded-full absolute" />
+      <div className={`rounded-full absolute bg-neon-main transition-all duration-300 ${isHovered ? 'w-2 h-2' : 'w-1.5 h-1.5'}`} />
     </motion.div>
   );
 }

@@ -192,7 +192,6 @@ const LeetCodeStats = memo(function LeetCodeStats() {
             try {
                 const res = await fetch(url);
                 if (!res.ok) {
-                    if (res.status === 429) console.warn(`Rate limit hit for ${url}`);
                     return null;
                 }
                 return await res.json();

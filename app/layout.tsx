@@ -8,6 +8,7 @@ import MotionProvider from '@/components/MotionProvider';
 import Schema from '@/components/seo/Schema';
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import CustomCursor from '@/components/CustomCursor';
 
 
 
@@ -121,7 +122,8 @@ export default function RootLayout({
             <div className="grain-overlay" />
 
             {/* Interactive Elements */}
-            <DotCursor />
+            {/* <DotCursor /> */}
+            <CustomCursor />
             <Navbar />
 
             {/* Main Content */}
