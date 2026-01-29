@@ -46,7 +46,7 @@ export default function Contact() {
     return (
         <footer id="contact" className="py-12 sm:py-16 md:py-20 container mx-auto px-4 sm:px-6 md:px-4 flex flex-col min-h-screen justify-end">
             <div className="px-2">
-                <h2 className="text-[16vw] sm:text-[14vw] md:text-[12vw] font-display font-black uppercase leading-[0.8] tracking-tighter text-center hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-white hover:to-neon-main transition-all duration-1000 ease-out cursor-default select-none">
+                <h2 className="text-[16vw] sm:text-[14vw] md:text-[12vw] font-display font-black uppercase leading-[0.8] tracking-tighter text-center transition-all duration-1000 ease-out cursor-default select-none">
                     Let's talk
                 </h2>
             </div>

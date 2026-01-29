@@ -21,7 +21,7 @@ const projects = [
         id: 2,
         title: "Fast-Typing Generator",
         category: "Web",
-        image: "https://placehold.co/600x400/E9F0E6/333?text=Fast+Typing",
+        image: "https://placehold.co/650x550/E9F0E6/333?text=Fast+Typing",
         link: "https://gemini-type.vercel.app/",
         github: "https://github.com/ShubhamModi032006/Gemini-type",
         description: "Generates text with a fast-typing effect using the Gemini API.",
@@ -31,7 +31,7 @@ const projects = [
         id: 3,
         title: "Local File Uploader",
         category: "Web",
-        image: "https://placehold.co/600x400/E9F0E6/333?text=Multer+Storage",
+        image: "https://placehold.co/650x550/E9F0E6/333?text=Multer+Storage",
         link: "#",
         github: "#",
         description: "Backend project for local file storage using Node.js and Multer.",
@@ -220,7 +220,8 @@ const ProjectCard = memo(function ProjectCard({ project, onVideoClick }: { proje
                         alt={project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                        className="object-fill object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                        unoptimized
                     />
                 </div>
 
