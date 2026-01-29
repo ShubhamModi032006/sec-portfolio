@@ -221,6 +221,7 @@ const ProjectCard = memo(function ProjectCard({ project, onVideoClick }: { proje
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                        unoptimized
                     />
                 </div>
 

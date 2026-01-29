@@ -276,6 +276,7 @@ const LeetCodeStats = memo(function LeetCodeStats() {
                         width={20}
                         height={20}
                         className="w-5 h-5"
+                        unoptimized
                     />
                     <span className="uppercase tracking-widest text-xs font-bold">LeetCode</span>
                 </div>
